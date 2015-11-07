@@ -19,12 +19,20 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['ember-simple-auth'] = {
+    routeAfterAuthentication: 'budgetSheets',
+    crossOriginWhitelist: ['http://localhost:3000']
+  }
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.contentSecurityPolicy = {
+      'connect-src': "'self' http://localhost:3000"
+    }
   }
 
   if (environment === 'test') {
