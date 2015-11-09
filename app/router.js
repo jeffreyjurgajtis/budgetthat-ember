@@ -8,6 +8,7 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   this.route('login');
   this.route('budgetSheets');
+  this.route('budgetSheet', { path: '/budgetSheets/:budgetSheetId' });
 });
 
 export default Router;
