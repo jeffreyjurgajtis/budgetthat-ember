@@ -25,7 +25,7 @@ export default BaseAuthenticator.extend({
         data:        JSON.stringify({ session: credentials }),
         contentType: 'application/json'
       }).then(function(response) {
-        var user = response.data.attributes
+        var user = response.data.attributes;
 
         Ember.run(function() {
           resolve({
@@ -34,7 +34,7 @@ export default BaseAuthenticator.extend({
           });
         });
 
-      }, function(xhr, status, error) {
+      }, function(xhr) {
         var response = xhr.responseJSON;
 
         Ember.run(function() {
@@ -46,7 +46,7 @@ export default BaseAuthenticator.extend({
 
   },
 
-  invalidate: function(data) {
+  invalidate: function() {
     return new Ember.RSVP.Promise(function(resolve) {
       resolve();
     });
