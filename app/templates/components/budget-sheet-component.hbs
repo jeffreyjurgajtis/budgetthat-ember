@@ -1,0 +1,10 @@
+<h2>{{budgetSheet.name}}</h2>
+
+{{#each budgetSheet.categories as |category|}}
+  <div>
+    {{category.name}}
+    <span>{{category.budgetAmount}}</span>
+  </div>
+{{/each}}
+
+{{category-form-component onSubmit=(action 'addCategory')}}
