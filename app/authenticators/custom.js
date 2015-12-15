@@ -25,7 +25,7 @@ export default BaseAuthenticator.extend({
         data:        JSON.stringify({ session: credentials }),
         contentType: 'application/json'
       }).then(function(response) {
-        var user = response.data.attributes;
+        var user = response.user;
 
         Ember.run(function() {
           resolve({
