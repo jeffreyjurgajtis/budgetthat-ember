@@ -5,8 +5,8 @@ export default Ember.Controller.extend({
     addCategory(name, budgetAmount) {
       var category = this.store.createRecord('category', {
         name: name,
-        budgetAmount: budgetAmount,
-        budgetSheet: this.model
+        budget_amount: budgetAmount,
+        budget_sheet: this.model
       });
 
       category.save();

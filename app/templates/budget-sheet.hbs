@@ -1,10 +1,21 @@
 <h2>{{model.name}}</h2>
 
-{{#each model.categories as |category|}}
+{{#each categories as |category|}}
   <div>
     {{category.name}}
-    <span>{{category.budgetAmount}}</span>
+    <span>{{category.budget_amount}}</span>
+    <span>{{category.entryAmountTotal}}</span>
+    <span>{{category.entryTotalDifference}}</span>
   </div>
 {{/each}}
 
 {{category-form addCategory=(action 'addCategory')}}
+
+{{#each entries as |entry|}}
+  <div>
+    {{entry.description}}
+    <span>{{entry.amount}}</span>
+    <span>{{entry.occurredOn}}</span>
+    <span>{{entry.category.name}}</span>
+  </div>
+{{/each}}
