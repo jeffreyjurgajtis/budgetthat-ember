@@ -1,9 +1,14 @@
-<h2 id="title">Spendify</h2>
+<div class="container">
+  <nav>
+    {{#if session.isAuthenticated}}
+      <a class="nav-item" {{ action 'invalidateSession'}}>Logout</a>
+      {{#link-to "budgetSheets" class="nav-item"}}Budget Sheets{{/link-to}}
+    {{else}}
+      <a class="nav-item" {{ action 'sessionRequiresAuthentication' }}>Login</a>
+    {{/if}}
 
-{{#if session.isAuthenticated}}
-  <p><a {{ action 'invalidateSession'}}>Logout</a></p>
-{{else}}
-  <p><a {{ action 'sessionRequiresAuthentication' }}>Login</a></p>
-{{/if}}
+    <h1>Spendify</h1>
+  </nav>
 
-{{outlet}}
+  {{outlet}}
+</div>

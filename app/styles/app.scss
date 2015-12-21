@@ -1,0 +1,43 @@
+@import '_reset.scss';
+
+$dark-grey: #47525d;
+$dark-purple: #7266ba;
+$light-purple: #f4f3f9;
+$white: #FFFFFF;
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: $white;
+  background-color: $dark-purple;
+}
+
+a {
+  color: $white;
+}
+
+div.container {
+  width: 760px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+nav {
+  border-bottom: 2px solid $white;
+  margin-bottom: 50px;
+  height: 60px;
+
+  h1 {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  a.nav-item {
+    cursor: pointer;
+    text-decoration: none;
+    float: right;
+    margin-left: 20px;
+    margin-top: 5px;
+  }
+}
