@@ -4,11 +4,15 @@ import DS from 'ember-data';
 var underscore = Ember.String.underscore;
 
 export default DS.RESTSerializer.extend({
-  keyForAttribute: function(attr) {
+  keyForAttribute(attr) {
     return underscore(attr);
   },
 
-  keyForRelationship: function(rawKey) {
+  keyForRelationship(rawKey) {
     return underscore(rawKey);
+  },
+
+  payloadKeyFromModelName(modelName) {
+    return underscore(modelName);
   }
 });

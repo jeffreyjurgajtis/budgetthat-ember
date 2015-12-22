@@ -1,7 +1,5 @@
 <div class="budget-sheet-index">
   {{budget-sheet-form addBudgetSheet=(action 'addBudgetSheet')}}
 
-  {{#each model as |budgetSheet|}}
-    {{budget-sheet-item budgetSheet=budgetSheet transitionToSheet=(action 'transitionToSheet')}}
-  {{/each}}
+  {{budget-sheet-list model=model transitionToSheet=(action 'transitionToSheet')}}
 </div>

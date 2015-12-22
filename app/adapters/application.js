@@ -7,7 +7,7 @@ export default DS.RESTAdapter.extend(DataAdapterMixin, {
 
   host: 'http://localhost:3000',
 
-  pathForType: function(type) {
+  pathForType(type) {
     var pluralizedType = Ember.String.pluralize(type);
     return Ember.String.underscore(pluralizedType);
   }

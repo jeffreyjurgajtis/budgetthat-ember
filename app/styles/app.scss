@@ -79,7 +79,8 @@ form.budget-sheet-form {
   input[type='text'] {
     @include border-radius;
     padding: 20px;
-    font-size: 16px;
+    font-size: $base-font-size;
+    font-weight: $base-font-weight;
     width: 487.5px;
     border: none;
     background-color: $light-grey;
