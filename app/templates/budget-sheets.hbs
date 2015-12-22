@@ -1,9 +1,7 @@
-<h2>Budget Sheets</h2>
+<div class="budget-sheet-index">
+  {{budget-sheet-form addBudgetSheet=(action 'addBudgetSheet')}}
 
-{{#each model as |budgetSheet|}}
-  <div>
-    {{#link-to 'budgetSheet' budgetSheet.id}}{{budgetSheet.name}}{{/link-to}}
-  </div>
-{{/each}}
-
-{{budget-sheet-form addBudgetSheet=(action 'addBudgetSheet')}}
+  {{#each model as |budgetSheet|}}
+    {{budget-sheet-item budgetSheet=budgetSheet transitionToSheet=(action 'transitionToSheet')}}
+  {{/each}}
+</div>

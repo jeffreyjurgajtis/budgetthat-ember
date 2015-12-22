@@ -1,18 +1,34 @@
 @import '_reset.scss';
 
 $dark-grey: #47525d;
-$dark-purple: #7266ba;
-$light-purple: #f4f3f9;
+$light-grey: #F6F7F8;
+$hover-grey: #ECECEC;
 $white: #FFFFFF;
+// $dark-purple: #7266ba;
+// $light-purple: #847BBB;
+// $lightest-purple: #EBEAF1;
+
+$radius: 1px;
+$base-font-size: 16px;
+$base-font-weight: 200;
+
+@mixin border-radius {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
 
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: $white;
-  background-color: $dark-purple;
+  font-size: $base-font-size;
+  font-weight: $base-font-weight;
+  color: $dark-grey;
+  background-color: $white;
 }
 
 a {
-  color: $white;
+  color: $dark-grey;
 }
 
 div.container {
@@ -24,13 +40,12 @@ div.container {
 }
 
 nav {
-  border-bottom: 2px solid $white;
-  margin-bottom: 50px;
+  border-bottom: 1px solid $dark-grey;
+  margin-bottom: 40px;
   height: 60px;
 
   h1 {
     font-size: 30px;
-    font-weight: bold;
   }
 
   a.nav-item {
@@ -39,5 +54,50 @@ nav {
     float: right;
     margin-left: 20px;
     margin-top: 5px;
+
+    &:hover {
+      color: $hover-grey;
+    }
+  }
+}
+
+div.block {
+  @include border-radius;
+  background-color: $light-grey;
+  padding: 20px;
+  margin-bottom: 5px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $hover-grey;
+  }
+}
+
+form.budget-sheet-form {
+  margin-bottom: 5px;
+
+  input[type='text'] {
+    @include border-radius;
+    padding: 20px;
+    font-size: 16px;
+    width: 487.5px;
+    border: none;
+    background-color: $light-grey;
+  }
+
+  button {
+    @include border-radius;
+    padding: 20px;
+    font-size: $base-font-size;
+    font-weight: $base-font-weight;
+    width: 228px;
+    border: none;
+    background-color: $light-grey;
+    color: $dark-grey;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $hover-grey;
+    }
   }
 }
