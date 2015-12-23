@@ -16,5 +16,18 @@ export default DS.Model.extend({
 
   difference: Ember.computed('total', 'spent', function() {
     return this.get('total') - this.get('spent');
+  }),
+
+  entries: Ember.computed('categories.[]', function() {
+    var categories = this.get('categories');
+    var result     = [];
+
+    categories.forEach(function(category) {
+      category.get('entries').forEach(function(entry) {
+        return result.push(entry);
+      });
+    });
+
+    return result;
   })
 });

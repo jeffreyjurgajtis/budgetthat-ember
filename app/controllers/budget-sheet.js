@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
       category.set(attribute, value);
       category.save();
 
-      this.model.notifyPropertyChange('categories.@each.budgetAmount'); // WHY!?
+      this.model.notifyPropertyChange('categories');
     },
 
     addEntry(occurredOn, description, categoryId, amount) {
@@ -28,6 +28,8 @@ export default Ember.Controller.extend({
         category: category,
         amount: amount
       });
+
+      this.model.notifyPropertyChange('categories');
     }
   }
 });

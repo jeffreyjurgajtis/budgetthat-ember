@@ -7,7 +7,7 @@
   <div class="cell">Difference</div>
 </div>
 
-{{#each categories as |category|}}
+{{#each model.categories as |category|}}
   <div class="category-row">
     {{category-name category=category updateCategory=(action 'updateCategory')}}
     {{category-budget-amount category=category updateCategory=(action 'updateCategory')}}
@@ -29,11 +29,11 @@
 
 <br>
 
-{{entry-form categories=categories addEntry=(action 'addEntry')}}
+{{entry-form categories=model.categories addEntry=(action 'addEntry')}}
 
 <br>
 
-{{#each entries as |entry|}}
+{{#each model.entries as |entry|}}
   <div>
     {{entry.description}}
     <span>{{entry.amount}}</span>
