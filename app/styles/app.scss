@@ -110,25 +110,41 @@ h2 {
 }
 
 div.category-row {
+  box-sizing: border-box;
   width: 760px;
 
-  div.category-element {
+  div.cell {
+    box-sizing: border-box;
     display: inline-block;
-    width: 180px;
-    margin-right: 5px;
+    width: 186px;
+    margin-right: 1px;
+    padding: 10px;
+
+    &:last-of-type {
+      width: 185px;
+      margin-right: 0px;
+    }
+
+    &.input {
+      padding: 0px;
+    }
 
     &.is-negative {
       color: $red;
     }
-  }
 
-  div.category-name, div.category-budget-amount {
     input {
+      box-sizing: border-box;
       @include border-radius;
       font-size: $base-font-size;
       font-weight: $base-font-weight;
       background-color: $light-grey;
       border: none;
+      padding: 10px;
+
+      &:focus {
+        outline: none;
+      }
     }
   }
 }

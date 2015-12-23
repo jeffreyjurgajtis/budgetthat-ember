@@ -1,11 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['category-element', 'category-total-difference'],
+  classNames: ['cell'],
 
   classNameBindings: ['isNegative'],
 
   isNegative: Ember.computed(function() {
-    return this.entryTotalDifference < 0;
-  }).property('entryTotalDifference')
+    return this.amount < 0;
+  }).property('amount')
 });

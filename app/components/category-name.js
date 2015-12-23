@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['category-element', 'category-name'],
+  classNames: ['cell', 'input'],
 
   focusOut(e) {
     var id    = this.category.get('id');

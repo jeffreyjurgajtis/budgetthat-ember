@@ -1,24 +1,26 @@
 <h2>{{model.name}}</h2>
 
+<div class="category-row">
+  <div class="cell">Category</div>
+  <div class="cell">Budget</div>
+  <div class="cell">Spent</div>
+  <div class="cell">Difference</div>
+</div>
+
 {{#each categories as |category|}}
   <div class="category-row">
     {{category-name category=category updateCategory=(action 'updateCategory')}}
     {{category-budget-amount category=category updateCategory=(action 'updateCategory')}}
-    <div class="category-element category-amount-total">
-      {{dollar-format category.entryAmountTotal}}
-    </div>
-
-    {{category-entry-difference entryTotalDifference=category.entryTotalDifference}}
+    <div class="cell">{{dollar-format category.entryAmountTotal}}</div>
+    {{category-cell amount=category.entryTotalDifference}}
   </div>
-
-  <br>
 {{/each}}
 
 <div class="category-row">
-  <div class="category-element">Total</div>
-  <div class="category-element">{{dollar-format model.total}}</div>
-  <div class="category-element">{{dollar-format model.spent}}</div>
-  <div class="category-element">{{dollar-format model.difference}}</div>
+  <div class="cell">Total</div>
+  <div class="cell">{{dollar-format model.total}}</div>
+  <div class="cell">{{dollar-format model.spent}}</div>
+  {{category-cell amount=model.difference}}
 </div>
 
 <br>
