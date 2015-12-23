@@ -1,0 +1,11 @@
+<form>
+  {{input placeholder='Occurred On' type='text' value=occurredOn}}
+  {{input placeholder='Description' type='text' value=description}}
+  <select id='categoryId'>
+    {{#each categories as |category|}}
+      <option value={{category.id}}>{{category.name}}</option>
+    {{/each}}
+  </select>
+  {{input placeholder='Amount' type='text' value=amount}}
+  <button type="submit">Add Entry</button>
+</form>
