@@ -12,10 +12,11 @@ export default Ember.Controller.extend({
       category.save();
     },
 
-    updateCategory(id, attribute, value) {
-      var category = this.store.peekRecord('category', id);
+    updateCategory(category, attribute, value) {
       category.set(attribute, value);
       category.save();
+
+      this.model.notifyPropertyChange('categories.@each.budgetAmount'); // WHY!?
     }
   }
 });

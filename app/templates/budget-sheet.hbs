@@ -11,8 +11,8 @@
   <div class="category-row">
     {{category-name category=category updateCategory=(action 'updateCategory')}}
     {{category-budget-amount category=category updateCategory=(action 'updateCategory')}}
-    <div class="cell">{{dollar-format category.entryAmountTotal}}</div>
-    {{category-cell amount=category.entryTotalDifference}}
+    <div class="cell">{{dollar-format category.total}}</div>
+    {{category-cell amount=category.difference}}
   </div>
 {{/each}}
 

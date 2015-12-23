@@ -5,7 +5,7 @@ export default Ember.Component.extend({
     e.preventDefault();
     var budgetAmount = String(this.budgetAmount).trim().replace(/\./g, '');
 
-    this.get('addCategory')(this.name, budgetAmount);
+    this.get('addCategory')(this.name, parseInt(budgetAmount));
     this.set('name', '');
     this.set('budgetAmount', '');
   }

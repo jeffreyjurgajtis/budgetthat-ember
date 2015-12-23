@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 
 export default DS.Model.extend({
   name:       DS.attr('string'),
@@ -7,19 +8,13 @@ export default DS.Model.extend({
   }),
   categories: DS.hasMany('category', { async: true }),
 
-  total: function() {
-    return this.get('categories').reduce(function(previousValue, category){
-      return previousValue + category.get('budgetAmount');
-    }, 0);
-  }.property('categories.@each.budgetAmount'),
+  categoryTotals: Ember.computed.mapBy('categories', 'budgetAmount'),
+  total: Ember.computed.sum('categoryTotals'),
 
-  spent: function() {
-    return this.get('categories').reduce(function(previousValue, category){
-      return previousValue + category.get('entryAmountTotal');
-    }, 0);
-  }.property('categories.@each.entryAmountTotal'),
+  categoryEntryTotals: Ember.computed.mapBy('categories', 'total'),
+  spent: Ember.computed.sum('categoryEntryTotals'),
 
-  difference: function() {
+  difference: Ember.computed('total', 'spent', function() {
     return this.get('total') - this.get('spent');
-  }.property('total', 'spent')
+  })
 });
