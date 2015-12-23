@@ -10,6 +10,12 @@ export default Ember.Controller.extend({
       });
 
       category.save();
+    },
+
+    updateCategory(id, attribute, value) {
+      var category = this.store.peekRecord('category', id);
+      category.set(attribute, value);
+      category.save();
     }
   }
 });

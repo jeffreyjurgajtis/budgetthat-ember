@@ -2,7 +2,8 @@
 
 {{#each categories as |category|}}
   <div>
-    {{category.name}}
+    {{category-name category=category
+                    updateCategory=(action 'updateCategory')}}
     <span>{{category.budget_amount}}</span>
     <span>{{category.entryAmountTotal}}</span>
     <span>{{category.entryTotalDifference}}</span>
@@ -10,6 +11,8 @@
 {{/each}}
 
 {{category-form addCategory=(action 'addCategory')}}
+
+<br>
 
 {{#each entries as |entry|}}
   <div>
