@@ -2,8 +2,8 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   name:          DS.attr('string'),
-  budget_amount: DS.attr('number'),
-  budget_sheet:  DS.belongsTo('budget-sheet'),
+  budgetAmount:  DS.attr('number'),
+  budgetSheet:   DS.belongsTo('budget-sheet'),
   entries:       DS.hasMany('entry'),
 
   entryAmountTotal: function() {
@@ -15,6 +15,6 @@ export default DS.Model.extend({
   }.property('entries.@each.amount'),
 
   entryTotalDifference: function() {
-    return this.get('budget_amount') - this.get('entryAmountTotal');
-  }.property('budget_amount', 'entryAmountTotal')
+    return this.get('budgetAmount') - this.get('entryAmountTotal');
+  }.property('budgetAmount', 'entryAmountTotal')
 });

@@ -4,6 +4,7 @@ $dark-grey: #47525d;
 $light-grey: #F6F7F8;
 $hover-grey: #ECECEC;
 $white: #FFFFFF;
+$red: #C26262;
 // $dark-purple: #7266ba;
 // $light-purple: #847BBB;
 // $lightest-purple: #EBEAF1;
@@ -106,4 +107,28 @@ form.budget-sheet-form {
 h2 {
   font-size: 25px;
   margin-bottom: 20px;
+}
+
+div.category-row {
+  width: 760px;
+
+  div.category-element {
+    display: inline-block;
+    width: 180px;
+    margin-right: 5px;
+
+    &.is-negative {
+      color: $red;
+    }
+  }
+
+  div.category-name, div.category-budget-amount {
+    input {
+      @include border-radius;
+      font-size: $base-font-size;
+      font-weight: $base-font-weight;
+      background-color: $light-grey;
+      border: none;
+    }
+  }
 }

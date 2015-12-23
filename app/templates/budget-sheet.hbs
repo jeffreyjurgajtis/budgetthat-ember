@@ -1,13 +1,17 @@
 <h2>{{model.name}}</h2>
 
 {{#each categories as |category|}}
-  <div>
-    {{category-name category=category
-                    updateCategory=(action 'updateCategory')}}
-    <span>{{category.budget_amount}}</span>
-    <span>{{category.entryAmountTotal}}</span>
-    <span>{{category.entryTotalDifference}}</span>
+  <div class="category-row">
+    {{category-name category=category updateCategory=(action 'updateCategory')}}
+    {{category-budget-amount category=category updateCategory=(action 'updateCategory')}}
+    <div class="category-element category-amount-total">
+      {{dollar-format category.entryAmountTotal}}
+    </div>
+
+    {{category-entry-difference entryTotalDifference=category.entryTotalDifference}}
   </div>
+
+  <br>
 {{/each}}
 
 {{category-form addCategory=(action 'addCategory')}}
