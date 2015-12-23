@@ -14,6 +14,15 @@
   <br>
 {{/each}}
 
+<div class="category-row">
+  <div class="category-element">Total</div>
+  <div class="category-element">{{dollar-format model.total}}</div>
+  <div class="category-element">{{dollar-format model.spent}}</div>
+  <div class="category-element">{{dollar-format model.difference}}</div>
+</div>
+
+<br>
+
 {{category-form addCategory=(action 'addCategory')}}
 
 <br>
