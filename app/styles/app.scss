@@ -1,17 +1,18 @@
 @import '_reset.scss';
 
 $dark-grey: #47525d;
-$light-grey: #F6F7F8;
-$hover-grey: #ECECEC;
 $white: #FFFFFF;
-$red: #C26262;
-// $dark-purple: #7266ba;
-// $light-purple: #847BBB;
-// $lightest-purple: #EBEAF1;
+$red: #FBA0A0;
+
+$primary-dark: #3A374E;
+$primary: lighten($primary-dark, 5%);
+$primary-light: lighten($primary-dark, 70%);
+$primary-hover: lighten($primary-dark, 10%);
 
 $radius: 1px;
 $base-font-size: 16px;
-$base-font-weight: 200;
+$base-font-weight: 300;
+$base-font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
 
 @mixin border-radius {
   -webkit-border-radius: $radius;
@@ -20,20 +21,26 @@ $base-font-weight: 200;
   border-radius: $radius;
 }
 
+@mixin border-box-sizing {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: $base-font-family;
   font-size: $base-font-size;
   font-weight: $base-font-weight;
-  color: $dark-grey;
-  background-color: $white;
+  color: $white;
+  background-color: $primary-dark;
 }
 
 a {
-  color: $dark-grey;
+  color: $white;
 }
 
 div.container {
-  width: 760px;
+  width: 825px;
   margin-top: 40px;
   margin-bottom: 40px;
   margin-left: auto;
@@ -41,7 +48,7 @@ div.container {
 }
 
 nav {
-  border-bottom: 1px solid $dark-grey;
+  border-bottom: 1px solid $primary;
   margin-bottom: 40px;
   height: 60px;
 
@@ -57,34 +64,35 @@ nav {
     margin-top: 5px;
 
     &:hover {
-      color: $hover-grey;
+      color: $primary-hover;
     }
   }
 }
 
 div.block {
   @include border-radius;
-  background-color: $light-grey;
+  background-color: $primary;
   padding: 20px;
   margin-bottom: 5px;
 
   &:hover {
     cursor: pointer;
-    background-color: $hover-grey;
+    background-color: $primary-hover;
   }
 }
 
 form.budget-sheet-form {
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 
   input[type='text'] {
     @include border-radius;
     padding: 20px;
     font-size: $base-font-size;
     font-weight: $base-font-weight;
-    width: 487.5px;
+    width: 552.5px;
     border: none;
-    background-color: $light-grey;
+    background-color: $primary-light;
+    color: $dark-grey;
   }
 
   button {
@@ -94,12 +102,12 @@ form.budget-sheet-form {
     font-weight: $base-font-weight;
     width: 228px;
     border: none;
-    background-color: $light-grey;
-    color: $dark-grey;
+    background-color: $primary;
+    color: $white;
 
     &:hover {
       cursor: pointer;
-      background-color: $hover-grey;
+      background-color: $primary-hover;
     }
   }
 }
@@ -110,18 +118,24 @@ h2 {
 }
 
 div.category-row {
-  box-sizing: border-box;
-  width: 760px;
+  @include border-box-sizing;
+  width: 100%;
+  border-bottom: 1px solid $primary;
 
   div.cell {
-    box-sizing: border-box;
+    @include border-box-sizing;
     display: inline-block;
-    width: 186px;
+    width: 194px;
     margin-right: 1px;
-    padding: 10px;
+    padding: 13px;
+    text-align: right;
+
+    &:first-of-type {
+      width: 226px;
+      text-align: left;
+    }
 
     &:last-of-type {
-      width: 185px;
       margin-right: 0px;
     }
 
@@ -134,13 +148,19 @@ div.category-row {
     }
 
     input {
-      box-sizing: border-box;
-      @include border-radius;
+      @include border-box-sizing;
       font-size: $base-font-size;
       font-weight: $base-font-weight;
-      background-color: $light-grey;
+      background-color: $primary;
+      color: $white;
       border: none;
-      padding: 10px;
+      padding: 12px;
+      width: inherit;
+      border-bottom: 1px solid $primary-dark;
+
+      &.right-aligned {
+        text-align: right;
+      }
 
       &:focus {
         outline: none;
