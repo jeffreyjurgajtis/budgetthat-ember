@@ -1,0 +1,10 @@
+<nav>
+  {{#if session.isAuthenticated}}
+    <a class="nav-item" {{ action 'logOut'}}>Logout</a>
+    {{#link-to "budgetSheets" class="nav-item"}}Budget Sheets{{/link-to}}
+  {{else}}
+    <a class="nav-item" {{ action 'transitionToLogin' }}>Login</a>
+  {{/if}}
+
+  <h1>Spendify</h1>
+</nav>

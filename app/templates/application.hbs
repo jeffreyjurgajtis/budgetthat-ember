@@ -1,14 +1,10 @@
 <div class="container">
-  <nav>
-    {{#if session.isAuthenticated}}
-      <a class="nav-item" {{ action 'invalidateSession'}}>Logout</a>
-      {{#link-to "budgetSheets" class="nav-item"}}Budget Sheets{{/link-to}}
-    {{else}}
-      <a class="nav-item" {{ action 'sessionRequiresAuthentication' }}>Login</a>
-    {{/if}}
-
-    <h1>Spendify</h1>
-  </nav>
+  {{
+    nav-bar
+    session=session
+    invalidateSession=(action 'invalidateSession')
+    sessionRequiresAuthentication=(action 'sessionRequiresAuthentication')
+  }}
 
   {{outlet}}
 </div>
