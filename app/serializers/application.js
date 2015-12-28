@@ -10,5 +10,9 @@ export default DS.RESTSerializer.extend({
 
   keyForRelationship(rawKey) {
     return underscore(rawKey);
+  },
+
+  payloadKeyFromModelName(rawKey) {
+    return underscore(rawKey);
   }
 });

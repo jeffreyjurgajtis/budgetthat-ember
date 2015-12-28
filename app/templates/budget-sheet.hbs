@@ -8,7 +8,7 @@
 </div>
 
 {{#each model.categories as |category|}}
-  <div class="category-row">
+  <div class="category-row light">
     {{category-name category=category updateCategory=(action 'updateCategory')}}
     {{category-budget-amount category=category updateCategory=(action 'updateCategory')}}
     <div class="cell">{{dollar-format category.total}}</div>

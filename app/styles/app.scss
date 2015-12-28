@@ -1,20 +1,19 @@
+@import url(https://fonts.googleapis.com/css?family=Oxygen:400,700);
 @import '_reset.scss';
 
-$dark-grey: #47525d;
-$white: #FFFFFF;
-$red: #FBA0A0;
-
-$primary-dark: #3A374E;
-$primary: lighten($primary-dark, 5%);
-$primary-light: lighten($primary-dark, 70%);
-$primary-hover: lighten($primary-dark, 10%);
-
-$radius: 1px;
 $base-font-size: 16px;
-$base-font-weight: 300;
-$base-font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
+$base-font-weight: 400;
+$bold-font-weight: 700;
+$base-font-family: 'Oxygen', sans-serif;;
 
-@mixin border-radius {
+$purple: #876ED1;
+$light-purple: #AAB1CE;
+$grey: #E7EBEE;
+$dark-grey: #47525d;
+$red: #C26262;
+$white: #FFFFFF;
+
+@mixin border-radius($radius: 2px) {
   -webkit-border-radius: $radius;
   -moz-border-radius: $radius;
   -ms-border-radius: $radius;
@@ -27,16 +26,24 @@ $base-font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
   box-sizing: border-box;
 }
 
+@mixin text-field {
+  font-size: $base-font-size;
+  font-weight: $base-font-weight;
+  background-color: $grey;
+  color: $dark-grey;
+  border: none;
+}
+
 body {
   font-family: $base-font-family;
   font-size: $base-font-size;
-  font-weight: $base-font-weight;
-  color: $white;
-  background-color: $primary-dark;
+  font-weight: $bold-font-weight;
+  color: $dark-grey;
+  background-color: $white;
 }
 
 a {
-  color: $white;
+  color: $dark-grey;
 }
 
 div.container {
@@ -48,12 +55,12 @@ div.container {
 }
 
 nav {
-  border-bottom: 1px solid $primary;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   height: 60px;
 
   h1 {
     font-size: 30px;
+    color: $purple;
   }
 
   a.nav-item {
@@ -62,76 +69,77 @@ nav {
     float: right;
     margin-left: 20px;
     margin-top: 5px;
+    color: $purple;
 
     &:hover {
-      color: $primary-hover;
+      color: $light-purple;
     }
   }
 }
 
-div.block {
-  @include border-radius;
-  background-color: $primary;
-  padding: 20px;
-  margin-bottom: 5px;
+// div.block {
+//   @include border-radius;
+//   background-color: $primary;
+//   padding: 20px;
+//   margin-bottom: 5px;
 
-  &:hover {
-    cursor: pointer;
-    background-color: $primary-hover;
-  }
-}
+//   &:hover {
+//     cursor: pointer;
+//     background-color: $primary-hover;
+//   }
+// }
 
 form.budget-sheet-form {
   margin-bottom: 15px;
 
-  input[type='text'] {
+  input {
     @include border-radius;
-    padding: 20px;
-    font-size: $base-font-size;
-    font-weight: $base-font-weight;
+    @include text-field;
     width: 552.5px;
-    border: none;
-    background-color: $primary-light;
-    color: $dark-grey;
+    padding: 15px;
   }
 
   button {
     @include border-radius;
-    padding: 20px;
+    padding: 15px;
     font-size: $base-font-size;
     font-weight: $base-font-weight;
     width: 228px;
     border: none;
-    background-color: $primary;
+    background-color: $purple;
     color: $white;
 
     &:hover {
       cursor: pointer;
-      background-color: $primary-hover;
+      background-color: $light-purple;
     }
   }
 }
 
 h2 {
-  font-size: 25px;
+  font-size: 20px;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 div.category-row {
   @include border-box-sizing;
   width: 100%;
-  border-bottom: 1px solid $primary;
+
+  &.light {
+    font-weight: $base-font-weight;
+  }
 
   div.cell {
     @include border-box-sizing;
     display: inline-block;
-    width: 194px;
+    width: 181px;
     margin-right: 1px;
     padding: 13px;
     text-align: right;
 
     &:first-of-type {
-      width: 226px;
+      width: 265px;
       text-align: left;
     }
 
@@ -149,14 +157,10 @@ div.category-row {
 
     input {
       @include border-box-sizing;
-      font-size: $base-font-size;
-      font-weight: $base-font-weight;
-      background-color: $primary;
-      color: $white;
-      border: none;
-      padding: 12px;
+      @include border-radius;
+      @include text-field;
+      padding: 10px;
       width: inherit;
-      border-bottom: 1px solid $primary-dark;
 
       &.right-aligned {
         text-align: right;
