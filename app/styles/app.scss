@@ -5,6 +5,7 @@ $base-font-size: 16px;
 $base-font-weight: 400;
 $bold-font-weight: 700;
 $base-font-family: 'Oxygen', sans-serif;;
+$base-padding: 10px;
 
 $purple: #876ED1;
 $light-purple: #AAB1CE;
@@ -33,6 +34,9 @@ $white: #FFFFFF;
   color: $dark-grey;
   border: none;
 }
+
+// TODO remove mixins
+@import '_blocks.scss';
 
 body {
   font-family: $base-font-family;

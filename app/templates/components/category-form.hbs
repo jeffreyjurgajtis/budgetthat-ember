@@ -1,5 +1,17 @@
 <form>
-  {{input placeholder='Category' type='text' value=name }}
-  {{input placeholder='Budget' type='text' value=budgetAmount}}
-  <button type="submit">Add Category</button>
+  {{input
+    placeholder='Name'
+    type='text'
+    class='category-name textfield textfield--long'
+    value=name}}
+
+  {{input 
+    placeholder='0.00'
+    type='text'
+    class='textfield textfield--short textfield--align-right'
+    value=budgetAmount}}
+
+  <button type="submit" class="button button--short">
+    Add Category
+  </button>
 </form>

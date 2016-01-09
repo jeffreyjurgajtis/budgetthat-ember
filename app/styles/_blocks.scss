@@ -1,0 +1,42 @@
+.textfield {
+  @include border-box-sizing;
+  @include border-radius;
+  padding: $base-padding;
+  font-size: $base-font-size;
+  font-weight: $base-font-weight;
+  background-color: $grey;
+  color: $dark-grey;
+  border: none;
+
+  &.textfield--long {
+    width: 265px;
+  }
+
+  &.textfield--short {
+    width: 181px;
+  }
+
+  &.textfield--align-right {
+    text-align: right;
+  }
+}
+
+.button {
+  @include border-box-sizing;
+  @include border-radius;
+  padding: $base-padding;
+  font-size: $base-font-size;
+  font-weight: $base-font-weight;
+  background-color: $purple;
+  color: $white;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $light-purple;
+  }
+
+  &.button--short {
+    width: 181px;
+  }
+}
