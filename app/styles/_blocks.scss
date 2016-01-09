@@ -1,3 +1,13 @@
+.h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+
+  &.h2--space-top {
+    margin-top: 40px;
+  }
+}
+
 .textfield {
   @include border-box-sizing;
   @include border-radius;

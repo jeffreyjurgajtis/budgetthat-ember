@@ -1,4 +1,4 @@
-<h2>{{model.name}}</h2>
+<h2 class="h2">{{model.name}}</h2>
 
 <div class="category-row">
   <div class="cell">Category</div>
@@ -25,7 +25,7 @@
 
 {{category-form addCategory=(action 'addCategory')}}
 
-<br>
+<h2 class="h2 h2--space-top">Transactions</h2>
 
 {{entry-form categories=model.categories addEntry=(action 'addEntry')}}
 
