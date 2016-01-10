@@ -22,12 +22,14 @@ export default Ember.Controller.extend({
     addEntry(occurredOn, description, categoryId, amount) {
       var category = this.store.peekRecord('category', categoryId);
 
-      this.store.createRecord('entry', {
+      var entry = this.store.createRecord('entry', {
         occurredOn: occurredOn,
         description: description,
         category: category,
         amount: amount
       });
+
+      entry.save();
 
       this.model.notifyPropertyChange('categories');
     }

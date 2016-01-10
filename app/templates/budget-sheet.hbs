@@ -30,10 +30,29 @@
 {{entry-form categories=model.categories addEntry=(action 'addEntry')}}
 
 {{#each model.entries as |entry|}}
-  <div>
-    {{entry.description}}
-    <span>{{entry.amount}}</span>
-    <span>{{entry.occurredOn}}</span>
-    <span>{{entry.category.name}}</span>
+  <div class="entry-form">
+    {{input
+      placeholder='MM/DD/YYYY'
+      type='text'
+      class='entry-form__textfield'
+      value=entry.occurredOn}}
+    {{input
+      placeholder='Description'
+      type='text'
+      class='entry-form__textfield entry-form__textfield--long'
+      value=entry.description}}
+    {{input
+      placeholder='0.00'
+      type='text'
+      class='entry-form__textfield entry-form__textfield--align-right'
+      value=entry.amount}}
+    <select id='categoryId' class='entry-form__select'>
+      {{#each model.categories as |category|}}
+        <option value={{category.id}} selected={{eq category.id entry.category.id}}>
+          {{category.name}}
+        </option>
+      {{/each}}
+    </select>
+    <button type="submit" class="entry-form__button">-</button>
   </div>
 {{/each}}

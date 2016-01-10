@@ -53,7 +53,11 @@
 
 .entry-form {
   @include border-box-sizing;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
+
+  &.entry-form--space-bottom {
+    margin-bottom: 20px;
+  }
 
   .entry-form__textfield, .entry-form__select {
     @include border-box-sizing;
@@ -65,14 +69,14 @@
     background-color: $grey;
     color: $dark-grey;
     border: none;
-    width: 156px;
+    width: 166px;
 
     &.entry-form__textfield--align-right {
       text-align: right;
     }
 
     &.entry-form__textfield--long {
-      width: 250px;
+      width: 268px;
     }
   }
 
@@ -85,7 +89,7 @@
     background-color: $purple;
     color: $white;
     border: none;
-    width: 90px;
+    width: 42px;
 
     &:hover {
       cursor: pointer;
