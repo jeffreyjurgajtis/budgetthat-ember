@@ -50,3 +50,46 @@
     width: 181px;
   }
 }
+
+.entry-form {
+  @include border-box-sizing;
+  margin-bottom: 20px;
+
+  .entry-form__textfield, .entry-form__select {
+    @include border-box-sizing;
+    @include border-radius;
+    @include no-appearance;
+    padding: $base-padding;
+    font-size: $base-font-size;
+    font-weight: $base-font-weight;
+    background-color: $grey;
+    color: $dark-grey;
+    border: none;
+    width: 156px;
+
+    &.entry-form__textfield--align-right {
+      text-align: right;
+    }
+
+    &.entry-form__textfield--long {
+      width: 250px;
+    }
+  }
+
+  .entry-form__button {
+    @include border-box-sizing;
+    @include border-radius;
+    padding: $base-padding;
+    font-size: $base-font-size;
+    font-weight: $base-font-weight;
+    background-color: $purple;
+    color: $white;
+    border: none;
+    width: 90px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $light-purple;
+    }
+  }
+}

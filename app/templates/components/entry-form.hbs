@@ -1,11 +1,23 @@
-<form>
-  {{input placeholder='Occurred On' type='text' value=occurredOn}}
-  {{input placeholder='Description' type='text' value=description}}
-  <select id='categoryId'>
+<form class="entry-form">
+  {{input
+    placeholder='MM/DD/YYYY'
+    type='text'
+    class='entry-form__textfield entry-occurred-on'
+    value=occurredOn}}
+  {{input
+    placeholder='Description'
+    type='text'
+    class='entry-form__textfield entry-form__textfield--long'
+    value=description}}
+  {{input
+    placeholder='0.00'
+    type='text'
+    class='entry-form__textfield entry-form__textfield--align-right'
+    value=amount}}
+  <select id='categoryId' class='entry-form__select'>
     {{#each categories as |category|}}
       <option value={{category.id}}>{{category.name}}</option>
     {{/each}}
   </select>
-  {{input placeholder='Amount' type='text' value=amount}}
-  <button type="submit">Add Entry</button>
+  <button type="submit" class="entry-form__button">Add</button>
 </form>

@@ -35,6 +35,12 @@ $white: #FFFFFF;
   border: none;
 }
 
+@mixin no-appearance {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 // TODO remove mixins
 @import '_blocks.scss';
 
