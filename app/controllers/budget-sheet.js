@@ -32,6 +32,13 @@ export default Ember.Controller.extend({
       entry.save();
 
       this.model.notifyPropertyChange('categories');
+    },
+
+    updateEntry(entry, attribute, value) {
+      entry.set(attribute, value);
+      entry.save();
+
+      this.model.notifyPropertyChange('categories');
     }
   }
 });

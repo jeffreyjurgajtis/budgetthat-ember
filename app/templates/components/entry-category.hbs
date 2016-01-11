@@ -1,0 +1,7 @@
+<select class='entry-form__select'>
+  {{#each categories as |category|}}
+    <option value={{category.id}} selected={{eq category.id entry.category.id}}>
+      {{category.name}}
+    </option>
+  {{/each}}
+</select>

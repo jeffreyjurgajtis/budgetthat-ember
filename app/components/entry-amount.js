@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['cell', 'input'],
+  classNames: ['entry-form__field-wrapper'],
 
   focusOut(e) {
     var value = String(e.target.value)
@@ -9,11 +9,11 @@ export default Ember.Component.extend({
       .replace(/\$/g, '')
       .replace(/\./g, '');
 
-    this.get('updateCategory')(this.category, 'budgetAmount', parseInt(value));
+    this.get('updateEntry')(this.entry, 'occurredOn', value);
   },
 
-  budgetAmount: Ember.computed('category.budgetAmount', function() {
-    var number = this.category.get('budgetAmount');
+  amount: Ember.computed('entry.amount', function() {
+    var number = this.entry.get('amount');
     return (number * 0.01).toFixed(2);
   })
 });

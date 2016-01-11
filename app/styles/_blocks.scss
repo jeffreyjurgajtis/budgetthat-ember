@@ -55,6 +55,10 @@
   @include border-box-sizing;
   margin-bottom: 5px;
 
+  .entry-form__field-wrapper {
+    display: inline-block;
+  }
+
   &.entry-form--space-bottom {
     margin-bottom: 20px;
   }

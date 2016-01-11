@@ -31,28 +31,13 @@
 
 {{#each model.entries as |entry|}}
   <div class="entry-form">
-    {{input
-      placeholder='MM/DD/YYYY'
-      type='text'
-      class='entry-form__textfield'
-      value=entry.occurredOn}}
-    {{input
-      placeholder='Description'
-      type='text'
-      class='entry-form__textfield entry-form__textfield--long'
-      value=entry.description}}
-    {{input
-      placeholder='0.00'
-      type='text'
-      class='entry-form__textfield entry-form__textfield--align-right'
-      value=entry.amount}}
-    <select id='categoryId' class='entry-form__select'>
-      {{#each model.categories as |category|}}
-        <option value={{category.id}} selected={{eq category.id entry.category.id}}>
-          {{category.name}}
-        </option>
-      {{/each}}
-    </select>
-    <button type="submit" class="entry-form__button">-</button>
+    {{entry-occurred-on entry=entry updateEntry=(action 'updateEntry')}}
+    {{entry-description entry=entry updateEntry=(action 'updateEntry')}}
+    {{entry-amount entry=entry updateEntry=(action 'updateEntry')}}
+    {{entry-category
+      entry=entry
+      categories=model.categories
+      updateEntry=(action 'updateEntry')}}
+    <button class="entry-form__button">-</button>
   </div>
 {{/each}}
