@@ -1,12 +1,36 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  categoryTotals: Ember.computed.mapBy('categories', 'budgetAmount'),
+  total: Ember.computed.sum('categoryTotals'),
+
+  categoryEntryTotals: Ember.computed.mapBy('categories', 'total'),
+  spent: Ember.computed.sum('categoryEntryTotals'),
+
+  difference: Ember.computed('total', 'spent', {
+    get() {
+      return this.get('total') - this.get('spent');
+    }
+  }),
+
+  entries: Ember.computed('categories.@each.entries', function() {
+    let result = [];
+
+    this.get('categories').forEach(function(category) {
+      category.get('entries').forEach(function(entry) {
+        return result.push(entry);
+      });
+    });
+
+    return result;
+  }),
+
   actions: {
     addCategory(name, budgetAmount) {
       var category = this.store.createRecord('category', {
         name: name,
         budgetAmount: budgetAmount,
-        budgetSheet: this.model
+        budgetSheet: this.budgetSheet
       });
 
       category.save();
@@ -15,8 +39,6 @@ export default Ember.Controller.extend({
     updateCategory(category, attribute, value) {
       category.set(attribute, value);
       category.save();
-
-      this.model.notifyPropertyChange('categories');
     },
 
     addEntry(occurredOn, description, categoryId, amount) {
@@ -30,15 +52,11 @@ export default Ember.Controller.extend({
       });
 
       entry.save();
-
-      this.model.notifyPropertyChange('categories');
     },
 
     updateEntry(entry, attribute, value) {
       entry.set(attribute, value);
       entry.save();
-
-      this.model.notifyPropertyChange('categories');
     }
   }
 });

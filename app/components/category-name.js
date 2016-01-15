@@ -4,8 +4,7 @@ export default Ember.Component.extend({
   classNames: ['cell', 'input'],
 
   focusOut(e) {
-    var value = String(e.target.value).trim();
-
-    this.get('updateCategory')(this.category, 'name', value);
+    const value = String(e.target.value).trim();
+    this.attrs.categoryChanged(this.get('category'), 'name', value);
   }
 });

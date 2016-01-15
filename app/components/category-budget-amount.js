@@ -4,16 +4,16 @@ export default Ember.Component.extend({
   classNames: ['cell', 'input'],
 
   focusOut(e) {
-    var value = String(e.target.value)
+    const value = String(e.target.value)
       .trim()
       .replace(/\$/g, '')
       .replace(/\./g, '');
 
-    this.get('updateCategory')(this.category, 'budgetAmount', parseInt(value));
+    this.attrs.categoryChanged(this.get('category'), 'budgetAmount', parseInt(value));
   },
 
   budgetAmount: Ember.computed('category.budgetAmount', function() {
-    var number = this.category.get('budgetAmount');
+    let number = this.category.get('budgetAmount');
     return (number * 0.01).toFixed(2);
   })
 });

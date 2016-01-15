@@ -1,4 +1,4 @@
-<h2 class="h2">{{model.name}}</h2>
+<h2 class="h2">{{budgetSheet.name}}</h2>
 
 <div class="category-row">
   <div class="cell">Category</div>
@@ -7,10 +7,12 @@
   <div class="cell">Difference</div>
 </div>
 
-{{#each model.categories as |category|}}
+{{#each categories as |category|}}
   <div class="category-row light">
-    {{category-name category=category updateCategory=(action 'updateCategory')}}
-    {{category-budget-amount category=category updateCategory=(action 'updateCategory')}}
+    {{category-name category=category categoryChanged=(action 'updateCategory')}}
+    {{category-budget-amount
+      category=category
+      categoryChanged=(action 'updateCategory')}}
     <div class="cell">{{dollar-format category.total}}</div>
     {{category-cell amount=category.difference}}
   </div>
@@ -18,26 +20,26 @@
 
 <div class="category-row">
   <div class="cell">Total</div>
-  <div class="cell">{{dollar-format model.total}}</div>
-  <div class="cell">{{dollar-format model.spent}}</div>
-  {{category-cell amount=model.difference}}
+  <div class="cell">{{dollar-format total}}</div>
+  <div class="cell">{{dollar-format spent}}</div>
+  {{category-cell amount=difference}}
 </div>
 
-{{category-form addCategory=(action 'addCategory')}}
+{{category-form categoryAdded=(action 'addCategory')}}
 
 <h2 class="h2 h2--space-top">Transactions</h2>
 
-{{entry-form categories=model.categories addEntry=(action 'addEntry')}}
+{{entry-form categories=categories entryAdded=(action 'addEntry')}}
 
-{{#each model.entries as |entry|}}
+{{#each entries as |entry|}}
   <div class="entry-form">
-    {{entry-occurred-on entry=entry updateEntry=(action 'updateEntry')}}
-    {{entry-description entry=entry updateEntry=(action 'updateEntry')}}
-    {{entry-amount entry=entry updateEntry=(action 'updateEntry')}}
+    {{entry-occurred-on entry=entry entryChanged=(action 'updateEntry')}}
+    {{entry-description entry=entry entryChanged=(action 'updateEntry')}}
+    {{entry-amount entry=entry entryChanged=(action 'updateEntry')}}
     {{entry-category
       entry=entry
-      categories=model.categories
-      updateEntry=(action 'updateEntry')}}
+      categories=categories
+      entryChanged=(action 'updateEntry')}}
     <button class="entry-form__button">-</button>
   </div>
 {{/each}}
