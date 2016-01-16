@@ -13,16 +13,18 @@ export default Ember.Controller.extend({
     }
   }),
 
-  entries: Ember.computed('categories.@each.entries', function() {
-    let result = [];
+  entries: Ember.computed('categories.[].entries', {
+    get() {
+      let result = [];
 
-    this.get('categories').forEach(function(category) {
-      category.get('entries').forEach(function(entry) {
-        return result.push(entry);
+      this.get('categories').map(function(category) {
+        category.get('entries').forEach(function(entry) {
+          return result.push(entry);
+        });
       });
-    });
 
-    return result;
+      return result;
+    }
   }),
 
   actions: {
@@ -54,9 +56,15 @@ export default Ember.Controller.extend({
       entry.save();
     },
 
-    updateEntry(entry, attribute, value) {
+    updateEntry(id, attribute, value) {
+      let entry = this.store.peekRecord('entry', id);
       entry.set(attribute, value);
       entry.save();
+    },
+
+    deleteEntry(id) {
+      let entry = this.store.peekRecord('entry', id);
+      entry.destroyRecord();
     }
   }
 });

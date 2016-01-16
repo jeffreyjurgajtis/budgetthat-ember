@@ -6,5 +6,5 @@ export default DS.Model.extend({
   createdAt:  DS.attr('date', {
     defaultValue() { return new Date(); }
   }),
-  categories: DS.hasMany('category', { async: true })
+  categories: DS.hasMany('category')
 });

@@ -4,12 +4,13 @@ export default Ember.Component.extend({
   classNames: ['entry-form__field-wrapper'],
 
   focusOut(e) {
+    const id = this.get('entry').id;
     const value = String(e.target.value)
       .trim()
       .replace(/\$/g, '')
       .replace(/\./g, '');
 
-    this.attrs.entryChanged(this.get('entry'), 'amount', value);
+    this.attrs.entryChanged(id, 'amount', parseInt(value));
   },
 
   amount: Ember.computed('entry.amount', function() {

@@ -40,6 +40,6 @@
       entry=entry
       categories=categories
       entryChanged=(action 'updateEntry')}}
-    <button class="entry-form__button">-</button>
+    {{entry-delete entry=entry entryRemoved=(action 'deleteEntry')}}
   </div>
 {{/each}}
