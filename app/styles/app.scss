@@ -87,18 +87,6 @@ nav {
   }
 }
 
-// div.block {
-//   @include border-radius;
-//   background-color: $primary;
-//   padding: 20px;
-//   margin-bottom: 5px;
-
-//   &:hover {
-//     cursor: pointer;
-//     background-color: $primary-hover;
-//   }
-// }
-
 form.budget-sheet-form {
   margin-bottom: 15px;
 
@@ -122,57 +110,6 @@ form.budget-sheet-form {
     &:hover {
       cursor: pointer;
       background-color: $light-purple;
-    }
-  }
-}
-
-div.category-row {
-  @include border-box-sizing;
-  width: 100%;
-
-  &.light {
-    font-weight: $base-font-weight;
-  }
-
-  div.cell {
-    @include border-box-sizing;
-    display: inline-block;
-    width: 181px;
-    margin-right: 1px;
-    padding: 13px;
-    text-align: right;
-
-    &:first-of-type {
-      width: 265px;
-      text-align: left;
-    }
-
-    &:last-of-type {
-      margin-right: 0px;
-    }
-
-    &.input {
-      padding: 0px;
-    }
-
-    &.is-negative {
-      color: $red;
-    }
-
-    input {
-      @include border-box-sizing;
-      @include border-radius;
-      @include text-field;
-      padding: 10px;
-      width: inherit;
-
-      &.right-aligned {
-        text-align: right;
-      }
-
-      &:focus {
-        outline: none;
-      }
     }
   }
 }

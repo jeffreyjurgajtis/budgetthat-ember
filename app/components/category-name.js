@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['cell', 'input'],
+  classNames: ['field-wrapper'],
 
   focusOut(e) {
     const value = String(e.target.value).trim();

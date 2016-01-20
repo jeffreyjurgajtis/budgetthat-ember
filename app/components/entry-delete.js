@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['entry-form__field-wrapper'],
+  classNames: ['field-wrapper'],
 
   click(e) {
     const entryId = this.get('entry').id;

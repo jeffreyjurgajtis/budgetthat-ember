@@ -1,23 +1,23 @@
-<form class="entry-form entry-form--space-bottom">
+<form>
   {{input
     placeholder='YYYY/MM/DD'
     type='text'
-    class='entry-form__textfield entry-occurred-on'
+    class='textfield textfield--space-bottom entry-occurred-on'
     value=occurredOn}}
   {{input
     placeholder='Description'
     type='text'
-    class='entry-form__textfield entry-form__textfield--long'
+    class='textfield textfield--space-bottom textfield--long'
     value=description}}
   {{input
     placeholder='0.00'
     type='text'
-    class='entry-form__textfield entry-form__textfield--align-right'
+    class='textfield textfield--space-bottom textfield--align-right'
     value=amount}}
-  <select id='categoryId' class='entry-form__select'>
+  <select id='categoryId' class='textfield textfield--space-bottom'>
     {{#each categories as |category|}}
       <option value={{category.id}}>{{category.name}}</option>
     {{/each}}
   </select>
-  <button type="submit" class="entry-form__button">+</button>
+  <button type="submit" class="button button--short">+</button>
 </form>

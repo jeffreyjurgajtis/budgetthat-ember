@@ -1,29 +1,22 @@
 <h2 class="h2">{{budgetSheet.name}}</h2>
 
-<div class="category-row">
-  <div class="cell">Category</div>
-  <div class="cell">Budget</div>
-  <div class="cell">Spent</div>
-  <div class="cell">Difference</div>
-</div>
+<div class="data-cell data-cell--bold data-cell--long">Category</div>
+<div class="data-cell data-cell--bold data-cell--align-right">Budget</div>
+<div class="data-cell data-cell--bold data-cell--align-right">Spent</div>
+<div class="data-cell data-cell--bold data-cell--align-right">Difference</div>
 
 {{#each categories as |category|}}
-  <div class="category-row light">
-    {{category-name category=category categoryChanged=(action 'updateCategory')}}
-    {{category-budget-amount
-      category=category
-      categoryChanged=(action 'updateCategory')}}
-    <div class="cell">{{dollar-format category.total}}</div>
-    {{category-cell amount=category.difference}}
-  </div>
+  {{category-name category=category categoryChanged=(action 'updateCategory')}}
+  {{category-budget-amount category=category categoryChanged=(action 'updateCategory')}}
+  <div class="data-cell data-cell--align-right">{{dollar-format category.total}}</div>
+  {{data-cell amount=category.difference alignRight=true}}
+  <button class="button button--short">-</button>
 {{/each}}
 
-<div class="category-row">
-  <div class="cell">Total</div>
-  <div class="cell">{{dollar-format total}}</div>
-  <div class="cell">{{dollar-format spent}}</div>
-  {{category-cell amount=difference}}
-</div>
+<div class="data-cell data-cell--bold data-cell--long">Total</div>
+<div class="data-cell data-cell--bold data-cell--align-right">{{dollar-format total}}</div>
+<div class="data-cell data-cell--bold data-cell--align-right">{{dollar-format spent}}</div>
+{{data-cell amount=difference alignRight=true isBold=true}}
 
 {{category-form categoryAdded=(action 'addCategory')}}
 
@@ -32,14 +25,12 @@
 {{entry-form categories=categories entryAdded=(action 'addEntry')}}
 
 {{#each entries as |entry|}}
-  <div class="entry-form">
-    {{entry-occurred-on entry=entry entryChanged=(action 'updateEntry')}}
-    {{entry-description entry=entry entryChanged=(action 'updateEntry')}}
-    {{entry-amount entry=entry entryChanged=(action 'updateEntry')}}
-    {{entry-category
-      entry=entry
-      categories=categories
-      entryChanged=(action 'updateEntry')}}
-    {{entry-delete entry=entry entryRemoved=(action 'deleteEntry')}}
-  </div>
+  {{entry-occurred-on entry=entry entryChanged=(action 'updateEntry')}}
+  {{entry-description entry=entry entryChanged=(action 'updateEntry')}}
+  {{entry-amount entry=entry entryChanged=(action 'updateEntry')}}
+  {{entry-category
+    entry=entry
+    categories=categories
+    entryChanged=(action 'updateEntry')}}
+  {{entry-delete entry=entry entryRemoved=(action 'deleteEntry')}}
 {{/each}}
