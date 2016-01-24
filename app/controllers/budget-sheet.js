@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
     }
   }),
 
-  entries: Ember.computed('categories.[].entries', {
+  entries: Ember.computed('categories.@each.entries', {
     get() {
       let result = [];
 

@@ -1,10 +1,12 @@
-<nav>
+<nav class="navbar">
   {{#if session.isAuthenticated}}
-    <a class="nav-item" {{ action 'logOut'}}>Logout</a>
-    {{#link-to "budgetSheets" class="nav-item"}}Budget Sheets{{/link-to}}
+    <a class="navbar__link" {{ action 'logOut'}}>Logout</a>
+    {{#link-to "budgetSheets" class="navbar__link"}}
+      Budget Sheets
+    {{/link-to}}
   {{else}}
-    <a class="nav-item" {{ action 'transitionToLogin' }}>Login</a>
+    <a class="navbar__link" {{ action 'transitionToLogin' }}>Login</a>
   {{/if}}
 
-  <h1>Spend.ify</h1>
+  <h1 class="navbar__h1">Spend.ify</h1>
 </nav>

@@ -1,4 +1,10 @@
-<form class="budget-sheet-form">
-  {{input placeholder='Budget Sheet' type='text' value=name }}
-  <button type="submit">Create Sheet</button>
+<p class="budget-sheet-card__p">Create new budget sheet...</p>
+
+<form>
+  {{input
+    placeholder='Name'
+    type='text'
+    value=name
+    class='textfield textfield--medium'}}
+  <button type="submit" class="button button--short">+</button>
 </form>

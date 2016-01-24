@@ -8,10 +8,6 @@ export default Ember.Controller.extend({
       });
 
       budgetSheet.save();
-    },
-
-    transitionToSheet(budgetSheetId) {
-      this.transitionToRoute('budgetSheet', budgetSheetId);
     }
   }
 });

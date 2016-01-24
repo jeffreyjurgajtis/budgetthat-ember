@@ -1,5 +1,7 @@
 <h2 class="h2">Budget Sheets</h2>
 
-{{budget-sheet-form addBudgetSheet=(action 'addBudgetSheet')}}
+{{#each model as |budgetSheet|}}
+  {{budget-sheet-item budgetSheet=budgetSheet}}
+{{/each}}
 
-{{budget-sheet-list model=model transitionToSheet=(action 'transitionToSheet')}}
+{{budget-sheet-form addBudgetSheet=(action 'addBudgetSheet')}}

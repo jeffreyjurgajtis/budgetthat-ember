@@ -1,47 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Oxygen:400,700);
 @import '_reset.scss';
-
-$base-font-size: 16px;
-$base-font-weight: 400;
-$bold-font-weight: 700;
-$base-font-family: 'Oxygen', sans-serif;;
-$base-padding: 10px;
-
-$purple: #876ED1;
-$light-purple: #AAB1CE;
-$grey: #E7EBEE;
-$dark-grey: #47525d;
-$red: #C26262;
-$white: #FFFFFF;
-
-@mixin border-radius($radius: 2px) {
-  -webkit-border-radius: $radius;
-  -moz-border-radius: $radius;
-  -ms-border-radius: $radius;
-  border-radius: $radius;
-}
-
-@mixin border-box-sizing {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-@mixin text-field {
-  font-size: $base-font-size;
-  font-weight: $base-font-weight;
-  background-color: $grey;
-  color: $dark-grey;
-  border: none;
-}
-
-@mixin no-appearance {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-// TODO remove mixins
+@import '_variables.scss';
+@import '_mixins.scss';
 @import '_blocks.scss';
 
 body {
@@ -52,11 +12,7 @@ body {
   background-color: $white;
 }
 
-a {
-  color: $dark-grey;
-}
-
-div.container {
+.container {
   width: 825px;
   margin-top: 40px;
   margin-bottom: 40px;
@@ -64,52 +20,10 @@ div.container {
   margin-right: auto;
 }
 
-nav {
-  margin-bottom: 20px;
-  height: 60px;
-
-  h1 {
-    font-size: 30px;
-    color: $purple;
-  }
-
-  a.nav-item {
-    cursor: pointer;
-    text-decoration: none;
-    float: right;
-    margin-left: 20px;
-    margin-top: 5px;
-    color: $purple;
-
-    &:hover {
-      color: $light-purple;
-    }
-  }
+.field-wrapper {
+  display: inline-block;
 }
 
-form.budget-sheet-form {
-  margin-bottom: 15px;
-
-  input {
-    @include border-radius;
-    @include text-field;
-    width: 552.5px;
-    padding: 15px;
-  }
-
-  button {
-    @include border-radius;
-    padding: 15px;
-    font-size: $base-font-size;
-    font-weight: $base-font-weight;
-    width: 228px;
-    border: none;
-    background-color: $purple;
-    color: $white;
-
-    &:hover {
-      cursor: pointer;
-      background-color: $light-purple;
-    }
-  }
+.space-bottom {
+  margin-bottom: 20px;
 }
