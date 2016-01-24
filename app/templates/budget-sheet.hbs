@@ -1,36 +1,45 @@
 <h2 class="h2">{{budgetSheet.name}}</h2>
 
-<div class="data-cell data-cell--bold data-cell--long">Category</div>
-<div class="data-cell data-cell--bold data-cell--align-right">Budget</div>
-<div class="data-cell data-cell--bold data-cell--align-right">Spent</div>
-<div class="data-cell data-cell--bold data-cell--align-right">Difference</div>
+<div class="backdrop">
+  <div class="data-cell data-cell--bold data-cell--long">Category</div>
+  <div class="data-cell data-cell--bold data-cell--align-right">Budget</div>
+  <div class="data-cell data-cell--bold data-cell--align-right">Spent</div>
+  <div class="data-cell data-cell--bold data-cell--align-right">Difference</div>
 
-{{#each categories as |category|}}
-  {{category-name category=category categoryChanged=(action 'updateCategory')}}
-  {{category-budget-amount category=category categoryChanged=(action 'updateCategory')}}
-  <div class="data-cell data-cell--align-right">{{dollar-format category.total}}</div>
-  {{data-cell amount=category.difference alignRight=true}}
-  <button class="button button--short">-</button>
-{{/each}}
+  {{#each categories as |category|}}
+    {{category-name category=category categoryChanged=(action 'updateCategory')}}
+    {{category-budget-amount category=category categoryChanged=(action 'updateCategory')}}
+    <div class="data-cell data-cell--align-right">{{dollar-format category.total}}</div>
+    {{data-cell amount=category.difference alignRight=true}}
+    <button class="button button--short">-</button>
+  {{/each}}
 
-<div class="data-cell data-cell--bold data-cell--long">Total</div>
-<div class="data-cell data-cell--bold data-cell--align-right">{{dollar-format total}}</div>
-<div class="data-cell data-cell--bold data-cell--align-right">{{dollar-format spent}}</div>
-{{data-cell amount=difference alignRight=true isBold=true}}
+  <div class="data-cell data-cell--bold data-cell--long">Total</div>
+  <div class="data-cell data-cell--bold data-cell--align-right">{{dollar-format total}}</div>
+  <div class="data-cell data-cell--bold data-cell--align-right">{{dollar-format spent}}</div>
+  {{data-cell amount=difference alignRight=true isBold=true}}
 
-{{category-form categoryAdded=(action 'addCategory')}}
+  {{category-form categoryAdded=(action 'addCategory')}}
+</div>
 
 <h2 class="h2 h2--space-top">Transactions</h2>
 
-{{entry-form categories=categories entryAdded=(action 'addEntry')}}
+<div class="backdrop">
+  <div class="data-cell data-cell--bold">Date</div>
+  <div class="data-cell data-cell--bold data-cell--long">Description</div>
+  <div class="data-cell data-cell--bold data-cell--align-right">Amount</div>
+  <div class="data-cell data-cell--bold">Category</div>
 
-{{#each entries as |entry|}}
-  {{entry-occurred-on entry=entry entryChanged=(action 'updateEntry')}}
-  {{entry-description entry=entry entryChanged=(action 'updateEntry')}}
-  {{entry-amount entry=entry entryChanged=(action 'updateEntry')}}
-  {{entry-category
-    entry=entry
-    categories=categories
-    entryChanged=(action 'updateEntry')}}
-  {{entry-delete entry=entry entryRemoved=(action 'deleteEntry')}}
-{{/each}}
+  {{entry-form categories=categories entryAdded=(action 'addEntry')}}
+
+  {{#each entries as |entry|}}
+    {{entry-occurred-on entry=entry entryChanged=(action 'updateEntry')}}
+    {{entry-description entry=entry entryChanged=(action 'updateEntry')}}
+    {{entry-amount entry=entry entryChanged=(action 'updateEntry')}}
+    {{entry-category
+      entry=entry
+      categories=categories
+      entryChanged=(action 'updateEntry')}}
+    {{entry-delete entry=entry entryRemoved=(action 'deleteEntry')}}
+  {{/each}}
+</div>

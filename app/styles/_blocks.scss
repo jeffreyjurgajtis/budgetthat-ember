@@ -2,7 +2,7 @@
   font-size: 20px;
   margin-bottom: 20px;
   text-align: center;
-  color: $purple;
+  color: $white;
 
   &.h2--space-top {
     margin-top: 40px;
@@ -17,17 +17,17 @@
   margin-bottom: 5px;
   font-size: $base-font-size;
   font-weight: $base-font-weight;
-  background-color: $grey;
-  color: $dark-grey;
+  background-color: $white;
+  color: $t-dark-grey;
   border: none;
-  width: 166px;
+  width: 164px;
 
   &.textfield--align-right {
     text-align: right;
   }
 
   &.textfield--long {
-    width: 268px;
+    width: 250px;
   }
 
   &.textfield--medium {
@@ -37,6 +37,15 @@
   &.textfield--space-bottom {
     margin-bottom: 20px;
   }
+
+  &.textfield--dark {
+    color: $t-grey;
+    background-color: $t-dark-purple;
+  }
+
+  &.textfield--grey {
+    background-color: $t-grey;
+  }
 }
 
 .button {
@@ -45,13 +54,13 @@
   padding: $base-padding;
   font-size: $base-font-size;
   font-weight: $base-font-weight;
-  background-color: $purple;
+  background-color: $t-purple;
   color: $white;
   border: none;
+  cursor: pointer;
 
   &:hover {
-    cursor: pointer;
-    background-color: $light-purple;
+    background-color: $t-light-purple;
   }
 
   &.button--short {
@@ -60,6 +69,14 @@
 
   &.button--long {
     padding: $base-padding 25px;
+  }
+
+  &.button--dark {
+    background-color: $t-dark-purple;
+
+    &:hover {
+      background-color: $t-light-purple;
+    }
   }
 }
 
@@ -71,9 +88,9 @@
   margin-bottom: 5px;
   font-size: $base-font-size;
   font-weight: $base-font-weight;
-  color: $dark-grey;
+  color: $t-dark-grey;
   border: none;
-  width: 166px;
+  width: 164px;
 
   &.data-cell--align-right {
     text-align: right;
@@ -84,7 +101,7 @@
   }
 
   &.data-cell--long {
-    width: 268px;
+    width: 250px;
   }
 
   &.data-cell--negative {
@@ -102,7 +119,7 @@
 
   .navbar__h1 {
     font-size: 30px;
-    color: $purple;
+    color: $t-light-purple;
   }
 
   .navbar__link {
@@ -111,10 +128,10 @@
     float: right;
     margin-left: 20px;
     margin-top: 5px;
-    color: $purple;
+    color: $t-light-purple;
 
     &:hover {
-      color: $light-purple;
+      color: $white;
     }
   }
 }
@@ -125,7 +142,7 @@
   float: left;
   display: inline-block;
   padding: $base-padding;
-  background-color: $purple;
+  background-color: $t-grey;
   width: 263px;
   height: 90px;
   margin: 0 18px 18px 0;
@@ -134,21 +151,21 @@
     margin-right: 0;
   }
 
-  &.budget-sheet-card__inverted {
-    background-color: $light-grey;
+  &.budget-sheet-card--inverted {
+    background-color: $t-purple;
   }
 
   .budget-sheet-card__link {
-    color: $white;
+    color: $t-purple;
     text-decoration: none;
 
     &:hover {
-      color: $light-purple;
+      color: $t-dark-purple;
     }
   }
 
-  .budget-sheet-card__p {
-    color: $purple;
+  .budget-sheet-card__title {
+    color: $t-light-purple;
     margin-bottom: 12px;
   }
 }
@@ -156,6 +173,13 @@
 .login {
   @include border-box-sizing;
   padding: $base-padding;
-  margin: 70px auto;
-  width: 288px;
+  margin: 100px auto;
+  width: 270px;
+}
+
+.backdrop {
+  @include border-box-sizing;
+  @include border-radius;
+  padding: $base-padding;
+  background-color: $t-grey;
 }
