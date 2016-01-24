@@ -1,9 +1,16 @@
-<h3>Login</h3>
+<h2 class="h2">Welcome</h2>
 
 <form {{action 'authenticate' on='submit'}}>
-  <label for="email">Email</label>
-  {{input id='email' placeholder='Enter Email' value=email}}
-  <label for="password">Password</label>
-  {{input id='password' placeholder='Enter Password' type='password' value=password}}
-  <button type="submit">Login</button>
+  {{input
+    id='email'
+    placeholder='Email'
+    class='textfield textfield--long'
+    value=email}}
+  {{input
+    id='password'
+    placeholder='Password'
+    type='password'
+    class='textfield textfield--long'
+    value=password}}
+  <button type="submit" class="button button--long">Login</button>
 </form>

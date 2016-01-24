@@ -2,6 +2,7 @@
   font-size: 20px;
   margin-bottom: 20px;
   text-align: center;
+  color: $purple;
 
   &.h2--space-top {
     margin-top: 40px;
@@ -55,6 +56,10 @@
 
   &.button--short {
     width: 42px;
+  }
+
+  &.button--long {
+    padding: $base-padding 25px;
   }
 }
 
@@ -130,8 +135,7 @@
   }
 
   &.budget-sheet-card__inverted {
-    background-color: $white;
-    border: 2px solid $grey;
+    background-color: $light-grey;
   }
 
   .budget-sheet-card__link {
@@ -147,4 +151,11 @@
     color: $purple;
     margin-bottom: 12px;
   }
+}
+
+.login {
+  @include border-box-sizing;
+  padding: $base-padding;
+  margin: 70px auto;
+  width: 288px;
 }
