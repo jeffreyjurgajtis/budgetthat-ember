@@ -29,42 +29,61 @@ export default Ember.Controller.extend({
 
   actions: {
     addCategory(name, budgetAmount) {
-      var category = this.store.createRecord('category', {
+      const flashMessages = Ember.get(this, 'flashMessages');
+
+      let category = this.store.createRecord('category', {
         name: name,
         budgetAmount: budgetAmount,
         budgetSheet: this.budgetSheet
       });
 
-      category.save();
+      category.save().then(function() {
+        flashMessages.success('Saved.');
+      });
     },
 
     updateCategory(category, attribute, value) {
+      const flashMessages = Ember.get(this, 'flashMessages');
+
       category.set(attribute, value);
-      category.save();
+      category.save().then(function() {
+        flashMessages.success('Saved.');
+      });
     },
 
     addEntry(occurredOn, description, categoryId, amount) {
-      var category = this.store.peekRecord('category', categoryId);
+      const flashMessages = Ember.get(this, 'flashMessages');
+      let category = this.store.peekRecord('category', categoryId);
 
-      var entry = this.store.createRecord('entry', {
+      let entry = this.store.createRecord('entry', {
         occurredOn: occurredOn,
         description: description,
         category: category,
         amount: amount
       });
 
-      entry.save();
+      entry.save().then(function() {
+        flashMessages.success('Saved.');
+      });
     },
 
     updateEntry(id, attribute, value) {
+      const flashMessages = Ember.get(this, 'flashMessages');
       let entry = this.store.peekRecord('entry', id);
       entry.set(attribute, value);
-      entry.save();
+
+      entry.save().then(function() {
+        flashMessages.success('Saved.');
+      });
     },
 
     deleteEntry(id) {
+      const flashMessages = Ember.get(this, 'flashMessages');
       let entry = this.store.peekRecord('entry', id);
-      entry.destroyRecord();
+
+      entry.destroyRecord().then(function() {
+        flashMessages.success('Saved.');
+      });
     }
   }
 });

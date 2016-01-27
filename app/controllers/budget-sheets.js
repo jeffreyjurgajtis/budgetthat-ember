@@ -3,11 +3,15 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   actions: {
     addBudgetSheet(name) {
-      var budgetSheet = this.store.createRecord('budget-sheet', {
+      const flashMessages = Ember.get(this, 'flashMessages');
+
+      let budgetSheet = this.store.createRecord('budget-sheet', {
         name: name,
       });
 
-      budgetSheet.save();
+      budgetSheet.save().then(function() {
+        flashMessages.success('Saved.');
+      });
     }
   }
 });
