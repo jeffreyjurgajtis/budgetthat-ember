@@ -51,6 +51,15 @@ export default Ember.Controller.extend({
       });
     },
 
+    deleteCategory(id) {
+      const flashMessages = Ember.get(this, 'flashMessages');
+      let category = this.store.peekRecord('category', id);
+
+      category.destroyRecord().then(function() {
+        flashMessages.success('Saved.');
+      });
+    },
+
     addEntry(occurredOn, description, categoryId, amount) {
       const flashMessages = Ember.get(this, 'flashMessages');
       let category = this.store.peekRecord('category', categoryId);

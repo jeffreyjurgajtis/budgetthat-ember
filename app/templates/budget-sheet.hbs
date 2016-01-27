@@ -11,7 +11,7 @@
     {{category-budget-amount category=category categoryChanged=(action 'updateCategory')}}
     <div class="data-cell data-cell--align-right">{{dollar-format category.total}}</div>
     {{data-cell amount=category.difference alignRight=true}}
-    <button class="button button--short">-</button>
+    {{category-delete categoryId=category.id categoryRemoved=(action 'deleteCategory')}}
   {{/each}}
 
   <div class="data-cell data-cell--bold data-cell--long">Total</div>
