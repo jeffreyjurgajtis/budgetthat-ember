@@ -204,22 +204,3 @@
   padding: $base-padding;
   background-color: $t-light-grey;
 }
-
-.alert {
-  @include border-box-sizing;
-  @include border-radius;
-  position: fixed;
-  top: 0;
-  z-index: 100;
-  margin-top: 15px;
-  margin-left: 15px;
-  padding: $base-padding 35px;
-
-  &.alert-success {
-    background-color: $t-light-purple;
-  }
-
-  &.alert-failure {
-    background-color: $red;
-  }
-}
