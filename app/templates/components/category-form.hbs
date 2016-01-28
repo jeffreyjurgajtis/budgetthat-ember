@@ -2,7 +2,7 @@
   {{input
     placeholder='Category'
     type='text'
-    class='textfield textfield--long'
+    class='textfield textfield--long category-name'
     value=name}}
 
   {{input 
@@ -11,5 +11,7 @@
     class='textfield textfield--align-right'
     value=budgetAmount}}
 
-  <button type="submit" class="button button--short">+</button>
+  <button type="submit" class="icon-button">
+    {{fa-icon "plus"}}
+  </button>
 </form>

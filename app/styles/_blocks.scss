@@ -39,12 +39,37 @@
   }
 
   &.textfield--dark {
-    color: $t-grey;
+    color: $t-light-grey;
     background-color: $t-dark-purple;
   }
 
   &.textfield--grey {
-    background-color: $t-grey;
+    background-color: $t-light-grey;
+  }
+}
+
+.icon-button {
+  @include border-box-sizing;
+  @include border-radius;
+  padding: $base-padding;
+  font-size: $base-font-size;
+  font-weight: $base-font-weight;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: $t-grey;
+  width: 42px;
+
+  &:hover {
+    color: $t-dark-grey;
+  }
+
+  &.icon-button--light {
+    color: $t-light-purple;
+
+    &:hover {
+      color: $white;
+    }
   }
 }
 
@@ -61,10 +86,6 @@
 
   &:hover {
     background-color: $t-light-purple;
-  }
-
-  &.button--short {
-    width: 42px;
   }
 
   &.button--long {
@@ -142,7 +163,7 @@
   float: left;
   display: inline-block;
   padding: $base-padding;
-  background-color: $t-grey;
+  background-color: $t-light-grey;
   width: 263px;
   height: 90px;
   margin: 0 18px 18px 0;
@@ -181,7 +202,7 @@
   @include border-box-sizing;
   @include border-radius;
   padding: $base-padding;
-  background-color: $t-grey;
+  background-color: $t-light-grey;
 }
 
 .alert {
