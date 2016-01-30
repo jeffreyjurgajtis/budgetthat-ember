@@ -21,9 +21,11 @@ export default Ember.Controller.extend({
       const flashMessages = Ember.get(this, 'flashMessages');
       let budgetSheet = this.store.peekRecord('budget-sheet', id);
 
-      budgetSheet.destroyRecord().then(function() {
-        flashMessages.success('Saved.');
-      });
+      if (confirm('Are you sure?')) {
+        budgetSheet.destroyRecord().then(function() {
+          flashMessages.success('Saved.');
+        });
+      }
     }
   }
 });

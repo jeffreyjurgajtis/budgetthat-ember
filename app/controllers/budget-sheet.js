@@ -58,9 +58,11 @@ export default Ember.Controller.extend({
       const flashMessages = Ember.get(this, 'flashMessages');
       let category = this.store.peekRecord('category', id);
 
-      category.destroyRecord().then(function() {
-        flashMessages.success('Saved.');
-      });
+      if (confirm('Are you sure?')) {
+        category.destroyRecord().then(function() {
+          flashMessages.success('Saved.');
+        });
+      }
     },
 
     addEntry(occurredOn, description, categoryId, amount) {
