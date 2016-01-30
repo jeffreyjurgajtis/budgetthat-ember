@@ -1,6 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  budgetSheetOrder: ['createdAt:asc'],
+  sortedBudgetSheets: Ember.computed.sort('budgetSheets', 'budgetSheetOrder'),
+
   actions: {
     addBudgetSheet(name) {
       const flashMessages = Ember.get(this, 'flashMessages');
