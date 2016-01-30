@@ -32,7 +32,7 @@
 
   {{entry-form categories=categories entryAdded=(action 'addEntry')}}
 
-  {{#each entries as |entry|}}
+  {{#each sortedEntries as |entry|}}
     {{entry-occurred-on entry=entry entryChanged=(action 'updateEntry')}}
     {{entry-description entry=entry entryChanged=(action 'updateEntry')}}
     {{entry-amount entry=entry entryChanged=(action 'updateEntry')}}

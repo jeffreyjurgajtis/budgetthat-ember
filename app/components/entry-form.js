@@ -3,7 +3,8 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   submit(e) {
     e.preventDefault();
-    const occurredOn  = this.occurredOn;
+    let occurredOnS   = String(this.occurredOn).trim();
+    const occurredOn  = new Date(occurredOnS);
     const description = this.description;
     const categoryId  = e.target.getElementsByTagName('select')[0].value;
     const amount      = String(this.amount)

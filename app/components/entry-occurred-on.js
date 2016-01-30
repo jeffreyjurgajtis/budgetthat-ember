@@ -5,7 +5,12 @@ export default Ember.Component.extend({
 
   focusOut(e) {
     const id = this.get('entry').id;
-    const value = String(e.target.value).trim();
-    this.attrs.entryChanged(id, 'occurredOn', value);
-  }
+    let value = String(e.target.value).trim();
+    let occurredOn = new Date(value);
+    this.attrs.entryChanged(id, 'occurredOn', occurredOn);
+  },
+  
+  occurredOnFormatted: Ember.computed(function() {
+    return this.get('entry').get('occurredOn').toISOString().substring(0, 10);
+  })
 });

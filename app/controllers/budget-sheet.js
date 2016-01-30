@@ -27,6 +27,9 @@ export default Ember.Controller.extend({
     }
   }),
 
+  entriesOrder: ['createdAt:desc'],
+  sortedEntries: Ember.computed.sort('entries', 'entriesOrder'),
+
   actions: {
     addCategory(name, budgetAmount) {
       const flashMessages = Ember.get(this, 'flashMessages');
