@@ -5,9 +5,9 @@ export default DS.Model.extend({
   name:          DS.attr('string'),
   budgetAmount:  DS.attr('number'),
   budgetSheet:   DS.belongsTo('budget-sheet'),
-  entries:       DS.hasMany('entry', { async: false }),
+  entries:       DS.hasMany('entry'),
 
-  total: Ember.computed('entries.@each.amount', {
+  total: Ember.computed('entries.content.@each.amount', {
     get() {
       let entries = this.get('entries');
 
