@@ -15,6 +15,15 @@ export default Ember.Controller.extend({
       budgetSheet.save().then(function() {
         flashMessages.success('Saved.');
       });
+    },
+
+    deleteBudgetSheet(id) {
+      const flashMessages = Ember.get(this, 'flashMessages');
+      let budgetSheet = this.store.peekRecord('budget-sheet', id);
+
+      budgetSheet.destroyRecord().then(function() {
+        flashMessages.success('Saved.');
+      });
     }
   }
 });

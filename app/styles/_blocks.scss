@@ -185,6 +185,23 @@
     }
   }
 
+  .budget-sheet-card__button {
+    @include border-box-sizing;
+    @include border-radius;
+    font-size: $base-font-size;
+    font-weight: $base-font-weight;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    float: right;
+    color: $t-grey;
+
+    &:hover {
+      cursor: pointer;
+      color: $t-dark-grey;
+    }
+  }
+
   .budget-sheet-card__title {
     color: $t-light-purple;
     margin-bottom: 12px;

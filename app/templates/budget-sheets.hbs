@@ -1,7 +1,9 @@
 <h2 class="h2">Budget Sheets</h2>
 
 {{#each sortedBudgetSheets as |budgetSheet|}}
-  {{budget-sheet-item budgetSheet=budgetSheet}}
+  {{budget-sheet-item
+    budgetSheet=budgetSheet
+    budgetSheetRemoved=(action 'deleteBudgetSheet')}}
 {{/each}}
 
 {{budget-sheet-form addBudgetSheet=(action 'addBudgetSheet')}}

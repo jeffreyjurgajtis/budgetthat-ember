@@ -1,3 +1,7 @@
+<button {{action 'deleteBudgetSheet'}} class="budget-sheet-card__button">
+  {{fa-icon "remove"}}
+</button>
+
 {{#link-to "budgetSheet" budgetSheet.id class="budget-sheet-card__link"}}
   {{budgetSheet.name}}
 {{/link-to}}
