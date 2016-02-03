@@ -43,7 +43,11 @@
   {{entry-form categories=categories entryAdded=(action 'addEntry')}}
 
   {{#each sortedEntries as |entry|}}
-    {{entry-occurred-on entry=entry entryChanged=(action 'updateEntry')}}
+    {{autosave-datefield
+      recordId=entry.id
+      attributeName='occurredOn'
+      attributeValue=entry.occurredOn
+      recordChanged=(action 'updateEntry')}}
     {{autosave-textfield
       recordId=entry.id
       attributeName='description'
