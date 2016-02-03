@@ -46,6 +46,10 @@
   &.textfield--grey {
     background-color: $t-light-grey;
   }
+
+  &.textfield--error {
+    background-color: $light-red;
+  }
 }
 
 .icon-button {
