@@ -45,8 +45,9 @@ export default Ember.Controller.extend({
       });
     },
 
-    updateCategory(category, attribute, value) {
+    updateCategory(id, attribute, value) {
       const flashMessages = Ember.get(this, 'flashMessages');
+      let category = this.store.peekRecord('category', id);
 
       category.set(attribute, value);
       category.save().then(function() {

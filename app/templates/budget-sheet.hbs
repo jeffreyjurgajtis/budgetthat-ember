@@ -7,7 +7,12 @@
   <div class="data-cell data-cell--bold data-cell--align-right">Difference</div>
 
   {{#each categories as |category|}}
-    {{category-name category=category categoryChanged=(action 'updateCategory')}}
+    {{autosave-textfield
+      recordId=category.id
+      attributeName='name'
+      attributeValue=category.name
+      placeholder='Category'
+      recordChanged=(action 'updateCategory')}}
     {{category-budget-amount category=category categoryChanged=(action 'updateCategory')}}
     <div class="data-cell data-cell--align-right">{{dollar-format category.total}}</div>
     {{data-cell amount=category.difference alignRight=true}}
@@ -34,7 +39,12 @@
 
   {{#each sortedEntries as |entry|}}
     {{entry-occurred-on entry=entry entryChanged=(action 'updateEntry')}}
-    {{entry-description entry=entry entryChanged=(action 'updateEntry')}}
+    {{autosave-textfield
+      recordId=entry.id
+      attributeName='description'
+      attributeValue=entry.description
+      placeholder='Description'
+      recordChanged=(action 'updateEntry')}}
     {{entry-amount entry=entry entryChanged=(action 'updateEntry')}}
     {{entry-category
       entry=entry

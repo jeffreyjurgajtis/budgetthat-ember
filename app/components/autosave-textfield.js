@@ -4,8 +4,9 @@ export default Ember.Component.extend({
   classNames: ['field-wrapper'],
 
   focusOut(e) {
-    const id = this.get('entry').id;
     const value = String(e.target.value).trim();
-    this.attrs.entryChanged(id, 'description', value);
+    const attributeName = this.get('attributeName');
+    const recordId = this.get('recordId');
+    this.attrs.recordChanged(recordId, attributeName, value);
   }
 });
