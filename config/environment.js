@@ -37,6 +37,7 @@ module.exports = function(environment) {
 
   ENV['ember-simple-auth'] = {
     routeAfterAuthentication: 'budgetSheets',
+    routeIfAlreadyAuthenticated: 'budgetSheets',
     crossOriginWhitelist: ['http://localhost:3000']
   }
 
