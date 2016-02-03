@@ -13,7 +13,12 @@
       attributeValue=category.name
       placeholder='Category'
       recordChanged=(action 'updateCategory')}}
-    {{category-budget-amount category=category categoryChanged=(action 'updateCategory')}}
+    {{autosave-moneyfield
+      recordId=category.id
+      attributeName='budgetAmount'
+      attributeValue=category.budgetAmount
+      placeholder='0.00'
+      recordChanged=(action 'updateCategory')}}
     <div class="data-cell data-cell--align-right">{{dollar-format category.total}}</div>
     {{data-cell amount=category.difference alignRight=true}}
     {{delete-button id=category.id recordDeleted=(action 'deleteCategory')}}
@@ -45,7 +50,12 @@
       attributeValue=entry.description
       placeholder='Description'
       recordChanged=(action 'updateEntry')}}
-    {{entry-amount entry=entry entryChanged=(action 'updateEntry')}}
+    {{autosave-moneyfield
+      recordId=entry.id
+      attributeName='amount'
+      attributeValue=entry.amount
+      placeholder='0.00'
+      recordChanged=(action 'updateEntry')}}
     {{entry-category
       entry=entry
       categories=categories

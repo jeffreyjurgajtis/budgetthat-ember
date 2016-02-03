@@ -4,17 +4,17 @@ export default Ember.Component.extend({
   classNames: ['field-wrapper'],
 
   focusOut(e) {
-    const id = this.get('entry').id;
+    const attributeName = this.get('attributeName');
+    const recordId = this.get('recordId');
     const value = String(e.target.value)
       .trim()
       .replace(/\$/g, '')
       .replace(/\./g, '');
-
-    this.attrs.entryChanged(id, 'amount', parseInt(value));
+    this.attrs.recordChanged(recordId, attributeName, parseInt(value));
   },
 
-  amount: Ember.computed('entry.amount', function() {
-    let number = this.entry.get('amount');
+  Amount: Ember.computed('attributeValue', function() {
+    let number = this.get('attributeValue');
     return (number * 0.01).toFixed(2);
   })
 });
