@@ -6,7 +6,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('login');
+  this.route('login', { path: '/'});
   this.route('budgetSheets');
   this.route('budgetSheet', { path: '/budgetSheets/:budgetSheetId' });
 });
