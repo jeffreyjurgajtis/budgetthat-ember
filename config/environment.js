@@ -53,7 +53,8 @@ module.exports = function(environment) {
       crossOriginWhitelist: ['http://localhost:3000']
     },
 
-    ENV['authEndpoint'] = 'http://localhost:3000/sessions'
+    ENV['authEndpoint'] = 'http://localhost:3000/sessions',
+    ENV['apiHost'] = 'http://localhost:3000'
   }
 
   if (environment === 'test') {
@@ -81,7 +82,8 @@ module.exports = function(environment) {
       'style-src': "'self' https://fonts.googleapis.com"
     },
 
-    ENV['authEndpoint'] = 'http://budjetapp-api.herokuapp.com/sessions'
+    ENV['authEndpoint'] = 'http://budjetapp-api.herokuapp.com/sessions',
+    ENV['apiHost'] = 'http://budjetapp-api.herokuapp.com'
   }
 
   return ENV;
