@@ -3,12 +3,16 @@
     placeholder='Category'
     type='text'
     class='textfield textfield--long category-name'
+    classBinding='nameInvalid:textfield--error'
+    focusIn=(action 'resetNameError')
     value=name}}
 
   {{input 
     placeholder='0.00'
     type='text'
     class='textfield textfield--align-right'
+    classBinding='amountInvalid:textfield--error'
+    focusIn=(action 'resetAmountError')
     value=budgetAmount}}
 
   <button type="submit" class="icon-button">
