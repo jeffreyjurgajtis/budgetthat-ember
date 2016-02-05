@@ -7,6 +7,10 @@ module.exports = function(defaults) {
     // Add options here
     emberCliFontAwesome: {
       useScss: true
+    },
+
+    dotEnv: {
+      clientAllowedKeys: ['S3_ACCESS_KEY', 'S3_SECRET_KEY']
     }
   });
 
