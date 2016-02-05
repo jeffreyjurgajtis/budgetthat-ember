@@ -3,16 +3,22 @@
     placeholder='YYYY/MM/DD'
     type='text'
     class='textfield textfield--space-bottom entry-occurred-on'
+    classBinding='occurredOnInvalid:textfield--error'
+    focusIn=(action 'resetOccurredOnError')
     value=occurredOn}}
   {{input
     placeholder='Description'
     type='text'
     class='textfield textfield--space-bottom textfield--long'
+    classBinding='descriptionInvalid:textfield--error'
+    focusIn=(action 'resetDescriptionError')
     value=description}}
   {{input
     placeholder='0.00'
     type='text'
     class='textfield textfield--space-bottom textfield--align-right'
+    classBinding='amountInvalid:textfield--error'
+    focusIn=(action 'resetAmountError')
     value=amount}}
   <select id='categoryId' class='textfield textfield--space-bottom'>
     {{#each categories as |category|}}
