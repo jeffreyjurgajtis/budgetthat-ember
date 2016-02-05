@@ -51,7 +51,9 @@ module.exports = function(environment) {
       routeAfterAuthentication: 'budgetSheets',
       routeIfAlreadyAuthenticated: 'budgetSheets',
       crossOriginWhitelist: ['http://localhost:3000']
-    }
+    },
+
+    ENV['authEndpoint'] = 'http://localhost:3000/sessions'
   }
 
   if (environment === 'test') {
@@ -77,7 +79,9 @@ module.exports = function(environment) {
       'connect-src': "'self' http://budjetapp-api.herokuapp.com",
       'font-src': "'self' https://fonts.gstatic.com",
       'style-src': "'self' https://fonts.googleapis.com"
-    }
+    },
+
+    ENV['authEndpoint'] = 'http://budjetapp-api.herokuapp.com/sessions'
   }
 
   return ENV;

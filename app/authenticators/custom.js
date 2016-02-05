@@ -1,8 +1,9 @@
 import Ember from 'ember';
 import BaseAuthenticator from 'ember-simple-auth/authenticators/base';
+import config from '../config/environment';
 
 export default BaseAuthenticator.extend({
-  tokenEndpoint: 'http://localhost:3000/sessions',
+  tokenEndpoint: config.authEndpoint,
 
   restore: function(data) {
     return new Ember.RSVP.Promise(function(resolve, reject) {
