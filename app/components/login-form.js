@@ -6,17 +6,17 @@ export default Ember.Component.extend({
 
   classNames: ['login'],
 
-  actions: {
-    authenticate: function() {
-      const flashMessages = this.get('flashMessages');
-      let credentials = this.getProperties('email', 'password');
+  submit(e) {
+    e.preventDefault();
 
-      this.get('session')
-        .authenticate('authenticator:custom', credentials)
-        .then(function() {
-      }, function() {
-        flashMessages.failure('Invalid email/password.');
-      });
-    }
+    const flashMessages = this.get('flashMessages');
+    let credentials = this.getProperties('email', 'password');
+
+    this.get('session')
+      .authenticate('authenticator:custom', credentials)
+      .then(function() {
+    }, function() {
+      flashMessages.failure('Invalid email/password.');
+    });
   }
 });
