@@ -35,12 +35,6 @@ module.exports = function(environment) {
     }
   };
 
-  ENV['ember-simple-auth'] = {
-    routeAfterAuthentication: 'budgetSheets',
-    routeIfAlreadyAuthenticated: 'budgetSheets',
-    crossOriginWhitelist: ['http://localhost:3000']
-  }
-
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -51,6 +45,12 @@ module.exports = function(environment) {
       'connect-src': "'self' http://localhost:3000",
       'font-src': "'self' https://fonts.gstatic.com",
       'style-src': "'self' https://fonts.googleapis.com"
+    },
+
+    ENV['ember-simple-auth'] = {
+      routeAfterAuthentication: 'budgetSheets',
+      routeIfAlreadyAuthenticated: 'budgetSheets',
+      crossOriginWhitelist: ['http://localhost:3000']
     }
   }
 
@@ -67,7 +67,17 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV['ember-simple-auth'] = {
+      routeAfterAuthentication: 'budgetSheets',
+      routeIfAlreadyAuthenticated: 'budgetSheets',
+      crossOriginWhitelist: ['http://budjetapp-api.herokuapp.com']
+    },
 
+    ENV.contentSecurityPolicy = {
+      'connect-src': "'self' http://budjetapp-api.herokuapp.com",
+      'font-src': "'self' https://fonts.gstatic.com",
+      'style-src': "'self' https://fonts.googleapis.com"
+    }
   }
 
   return ENV;
