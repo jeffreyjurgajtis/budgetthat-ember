@@ -17,6 +17,7 @@
   margin-bottom: 5px;
   font-size: $base-font-size;
   font-weight: $base-font-weight;
+  font-family: $base-font-family;
   background-color: $white;
   color: $t-dark-grey;
   border: none;
@@ -49,6 +50,10 @@
 
   &.textfield--error {
     background-color: $light-red;
+
+    &::-webkit-input-placeholder {
+      color: $white;
+    }
   }
 }
 
@@ -82,7 +87,8 @@
   @include border-radius;
   padding: $base-padding;
   font-size: $base-font-size;
-  font-weight: $base-font-weight;
+  font-weight: $bold-font-weight;
+  font-family: $base-font-family;
   background-color: $t-purple;
   color: $white;
   border: none;
@@ -97,10 +103,11 @@
   }
 
   &.button--dark {
-    background-color: $t-dark-purple;
+    color: $t-purple;
+    background-color: $t-light-purple;
 
     &:hover {
-      background-color: $t-light-purple;
+      background-color: darken($t-light-purple, 5%);
     }
   }
 }
