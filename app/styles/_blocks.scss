@@ -13,15 +13,16 @@
   @include border-box-sizing;
   @include border-radius;
   @include no-appearance;
-  padding: $base-padding;
+  padding: $compact-padding;
   margin-bottom: 5px;
   font-size: $base-font-size;
   font-weight: $base-font-weight;
   font-family: $base-font-family;
   background-color: $white;
   color: $t-dark-grey;
-  border: none;
   width: 164px;
+  outline: none;
+  border: 1px solid $white;
 
   &.textfield--align-right {
     text-align: right;
@@ -39,28 +40,34 @@
     margin-bottom: 20px;
   }
 
+  &.textfield--relaxed {
+    padding: $base-padding;
+  }
+
   &.textfield--dark {
     color: $t-light-grey;
     background-color: $t-dark-purple;
-  }
-
-  &.textfield--grey {
-    background-color: $t-light-grey;
+    border: 1px solid $t-dark-purple;
   }
 
   &.textfield--error {
     background-color: $light-red;
+    border: 1px solid $light-red;
 
     &::-webkit-input-placeholder {
       color: $white;
     }
+  }
+
+  &:focus {
+    border: 1px solid $blue;
   }
 }
 
 .icon-button {
   @include border-box-sizing;
   @include border-radius;
-  padding: $base-padding;
+  padding: $compact-padding;
   font-size: $base-font-size;
   font-weight: $base-font-weight;
   background-color: transparent;
@@ -68,6 +75,7 @@
   cursor: pointer;
   color: $t-grey;
   width: 42px;
+  outline: none;
 
   &:hover {
     color: $t-dark-grey;
@@ -77,7 +85,7 @@
     color: $t-light-purple;
 
     &:hover {
-      color: $white;
+      color: lighten($t-light-purple, 10%);
     }
   }
 }
@@ -93,6 +101,7 @@
   color: $white;
   border: none;
   cursor: pointer;
+  outline: none;
 
   &:hover {
     background-color: $t-light-purple;
@@ -107,7 +116,7 @@
     background-color: $t-light-purple;
 
     &:hover {
-      background-color: darken($t-light-purple, 5%);
+      background-color: lighten($t-light-purple, 10%);
     }
   }
 }
@@ -116,7 +125,7 @@
   @include border-box-sizing;
   @include border-radius;
   display: inline-block;
-  padding: $base-padding;
+  padding: $compact-padding;
   margin-bottom: 5px;
   font-size: $base-font-size;
   font-weight: $base-font-weight;
@@ -163,7 +172,7 @@
     color: $t-light-purple;
 
     &:hover {
-      color: $white;
+      color: lighten($t-light-purple, 10%);
     }
   }
 }
