@@ -14,7 +14,7 @@
   @include border-radius;
   @include no-appearance;
   padding: $compact-padding;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
   font-size: $base-font-size;
   font-weight: $base-font-weight;
   font-family: $base-font-family;
@@ -22,7 +22,7 @@
   color: $t-dark-grey;
   width: 164px;
   outline: none;
-  border: 1px solid $white;
+  border: 1px solid $t-border-grey;
 
   &.textfield--align-right {
     text-align: right;
@@ -48,6 +48,11 @@
     color: $t-light-grey;
     background-color: $t-dark-purple;
     border: 1px solid $t-dark-purple;
+
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 1000px $t-dark-purple inset;
+      -webkit-text-fill-color: $t-light-grey;
+    }
   }
 
   &.textfield--error {
@@ -75,7 +80,6 @@
   cursor: pointer;
   color: $t-grey;
   width: 42px;
-  outline: none;
 
   &:hover {
     color: $t-dark-grey;
@@ -101,7 +105,6 @@
   color: $white;
   border: none;
   cursor: pointer;
-  outline: none;
 
   &:hover {
     background-color: $t-light-purple;
@@ -231,7 +234,7 @@
 .login {
   @include border-box-sizing;
   padding: $base-padding;
-  margin: 100px auto;
+  margin: 150px auto;
   width: 270px;
 }
 
