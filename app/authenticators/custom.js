@@ -7,7 +7,7 @@ export default BaseAuthenticator.extend({
 
   restore: function(data) {
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      if (!Ember.isEmpty(data.access_token)) {
+      if (!Ember.isEmpty(data.token)) {
         resolve(data);
       } else {
         reject();
@@ -30,7 +30,7 @@ export default BaseAuthenticator.extend({
 
         Ember.run(function() {
           resolve({
-            access_token: user.access_token,
+            token: user.token,
             email: user.email
           });
         });
