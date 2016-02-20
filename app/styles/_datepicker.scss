@@ -1,0 +1,23 @@
+.datepicker {
+  .pika-button {
+    box-shadow: none !important;
+    background-color: $white;
+
+    &:hover {
+      background-color: $t-light-grey;
+    }
+  }
+
+  td.is-today {
+    .pika-button {
+      color: $t-purple;
+    }
+  }
+
+  td.is-selected {
+    .pika-button {
+      background: $t-purple;
+      color: $white;
+    }
+  }
+}

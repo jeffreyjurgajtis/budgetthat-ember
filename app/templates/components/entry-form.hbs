@@ -1,11 +1,12 @@
 <form>
-  {{input
-    placeholder='YYYY/MM/DD'
-    type='text'
-    class='textfield textfield--space-bottom entry-occurred-on'
+  {{pikaday-input
+    value=occurredOn
+    format="MM/DD/YYYY"
+    placeholder="MM/DD/YYYY"
+    theme="datepicker"
     classBinding='occurredOnInvalid:textfield--error'
     focusIn=(action 'resetOccurredOnError')
-    value=occurredOn}}
+    class='textfield textfield--space-bottom'}}
   {{input
     placeholder='Description'
     type='text'

@@ -1,17 +1,43 @@
 import Ember from 'ember';
+import moment from 'moment';
+import PikadayInputComponent from 'ember-pikaday/components/pikaday-input';
 
-export default Ember.Component.extend({
-  classNames: ['field-wrapper'],
+export default PikadayInputComponent.extend({
+  classNames: ['textfield'],
+  classNameBindings: ['isInvalid:textfield--error'],
+  theme: 'datepicker',
+  format: 'MM/DD/YYYY',
+  placeholder: 'MM/DD/YYYY',
 
-  focusOut(e) {
+  value: Ember.computed('attributeValue', function() {
+    return this.get('attributeValue');
+  }),
+
+  focusIn() {
+    this.set('isInvalid', false);
+  },
+
+  onPikadayClose() {
+    this._super();
+
     const recordId = this.get('recordId');
     const attributeName = this.get('attributeName');
-    let value = String(e.target.value).trim();
-    let newDate = new Date(value);
-    this.attrs.recordChanged(recordId, attributeName, newDate);
+    const date = this.dateToMoment(this.get('value'));
+
+    if (date.isValid()) {
+      this.attrs.recordChanged(recordId, attributeName, date.toDate());
+    } else {
+      this.set('isInvalid', true);
+    }
   },
-  
-  dateFormatted: Ember.computed(function() {
-    return this.get('attributeValue').toISOString().substring(0, 10);
-  })
+
+  dateToMoment(date) {
+    const format = this.get('format');
+
+    if (Ember.isBlank(date)) {
+      return moment(date, format);
+    } else {
+      return moment(date.toLocaleDateString(), format);
+    }
+  }
 });

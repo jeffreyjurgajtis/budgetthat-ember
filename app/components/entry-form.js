@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import moment from 'moment';
 
 export default Ember.Component.extend({
   occurredOnValid: true,
@@ -9,29 +10,36 @@ export default Ember.Component.extend({
   amountInvalid: Ember.computed.not('amountValid'),
   valid: Ember.computed.and('occurredOnValid', 'descriptionValid', 'amountValid'),
 
+  occurredOn: new Date(),
+
   submit(e) {
     e.preventDefault();
-    let occurredOnS   = String(this.occurredOn).trim();
-    const occurredOn  = new Date(occurredOnS);
-    const description = this.description;
+
+    const occurredOn  = this.dateToMoment(this.get('occurredOn'));
+    const description = this.get('description');
     const categoryId  = e.target.getElementsByTagName('select')[0].value;
-    let amount        = String(this.amount)
+    let amount        = String(this.get('amount'))
       .trim()
       .replace(/\$/g, '')
       .replace(/\./g, '');
     amount = parseInt(amount);
 
     if (this.validate(occurredOn, description, amount)) {
-      this.attrs.entryAdded(occurredOn, description, categoryId, amount);
-      this.set('occurredOn', '');
+      this.attrs.entryAdded(
+        occurredOn.toDate(),
+        description,
+        categoryId,
+        amount
+      );
+
       this.set('description', '');
       this.set('amount', '');
-      this.$('input.entry-occurred-on').focus();
+      this.$('input.textfield--long').focus();
     }
   },
 
   validate: function(occurredOn, description, amount) {
-    if (String(occurredOn) === "Invalid Date") {
+    if (!occurredOn.isValid()) {
       this.set('occurredOnValid', false);
     }
 
@@ -57,6 +65,14 @@ export default Ember.Component.extend({
 
     resetAmountError() {
       this.set('amountValid', true);
+    }
+  },
+
+  dateToMoment(date) {
+    if (Ember.isBlank(date)) {
+      return moment(date, "MM/DD/YYYY");
+    } else {
+      return moment(date.toLocaleDateString(), "MM/DD/YYYY");
     }
   }
 });
