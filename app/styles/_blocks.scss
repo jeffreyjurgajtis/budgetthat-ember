@@ -9,6 +9,14 @@
   }
 }
 
+.text {
+  color: $t-light-purple;
+
+  &.text--align-center {
+    text-align: center;
+  }
+}
+
 .textfield {
   @include border-box-sizing;
   @include border-radius;

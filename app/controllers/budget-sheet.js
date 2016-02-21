@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  categoriesEmpty: Ember.computed.empty('categories'),
   categoryTotals: Ember.computed.mapBy('categories', 'budgetAmount'),
   total: Ember.computed.sum('categoryTotals'),
 
