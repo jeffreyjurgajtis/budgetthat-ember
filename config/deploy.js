@@ -11,14 +11,14 @@ module.exports = function(deployTarget) {
     's3-index': {
       accessKeyId: process.env['S3_ACCESS_KEY'],
       secretAccessKey: process.env['S3_SECRET_KEY'],
-      bucket: "budjet-app",
+      bucket: "budgetthat",
       region: "us-east-1",
       allowOverwrite: true
     },
     's3': {
       accessKeyId: process.env['S3_ACCESS_KEY'],
       secretAccessKey: process.env['S3_SECRET_KEY'],
-      bucket: "budjet-app",
+      bucket: "budgetthat",
       region: "us-east-1"
     }
   };
