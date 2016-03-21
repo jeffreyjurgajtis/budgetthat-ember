@@ -10,7 +10,7 @@ export default PikadayInputComponent.extend({
   placeholder: 'MM/DD/YYYY',
 
   value: Ember.computed('attributeValue', function() {
-    return this.get('attributeValue');
+    return moment.utc(this.get('attributeValue')).add(1, 'days')._d;
   }),
 
   focusIn() {
