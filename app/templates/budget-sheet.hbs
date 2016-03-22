@@ -49,37 +49,31 @@
   <div class="data-cell data-cell--bold">Category</div>
 
   {{#unless currentlyLoading}}
-    {{#if categoriesEmpty}}
-      <p class="text text--align-center">
-        add categories to begin recording expenses
-      </p>
-    {{else}}
-      {{entry-form categories=categories entryAdded=(action 'addEntry')}}
+    {{entry-form categories=categories entryAdded=(action 'addEntry')}}
 
-      {{#each sortedEntries as |entry|}}
-        {{autosave-datefield
-          recordId=entry.id
-          attributeName='occurredOn'
-          attributeValue=entry.occurredOn
-          recordChanged=(action 'updateEntry')}}
-        {{autosave-textfield
-          recordId=entry.id
-          attributeName='description'
-          attributeValue=entry.description
-          placeholder='Description'
-          recordChanged=(action 'updateEntry')}}
-        {{autosave-moneyfield
-          recordId=entry.id
-          attributeName='amount'
-          attributeValue=entry.amount
-          placeholder='0.00'
-          recordChanged=(action 'updateEntry')}}
-        {{entry-category
-          entry=entry
-          categories=categories
-          entryChanged=(action 'updateEntry')}}
-        {{delete-button id=entry.id recordDeleted=(action 'deleteEntry')}}
-      {{/each}}
-    {{/if}}
+    {{#each sortedEntries as |entry|}}
+      {{autosave-datefield
+        recordId=entry.id
+        attributeName='occurredOn'
+        attributeValue=entry.occurredOn
+        recordChanged=(action 'updateEntry')}}
+      {{autosave-textfield
+        recordId=entry.id
+        attributeName='description'
+        attributeValue=entry.description
+        placeholder='Description'
+        recordChanged=(action 'updateEntry')}}
+      {{autosave-moneyfield
+        recordId=entry.id
+        attributeName='amount'
+        attributeValue=entry.amount
+        placeholder='0.00'
+        recordChanged=(action 'updateEntry')}}
+      {{entry-category
+        entry=entry
+        categories=categories
+        entryChanged=(action 'updateEntry')}}
+      {{delete-button id=entry.id recordDeleted=(action 'deleteEntry')}}
+    {{/each}}
   {{/unless}}
 </div>

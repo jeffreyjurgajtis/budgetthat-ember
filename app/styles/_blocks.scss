@@ -9,14 +9,6 @@
   }
 }
 
-.text {
-  color: $t-light-purple;
-
-  &.text--align-center {
-    text-align: center;
-  }
-}
-
 .textfield {
   @include border-box-sizing;
   @include border-radius;
@@ -42,10 +34,6 @@
 
   &.textfield--medium {
     width: 192px;
-  }
-
-  &.textfield--space-bottom {
-    margin-bottom: 20px;
   }
 
   &.textfield--relaxed {
