@@ -163,6 +163,18 @@
   &.data-cell--space-bottom {
     margin-bottom: 20px;
   }
+
+  &.data-cell--pad-top {
+    padding-top: 10px;
+  }
+
+  &.data-cell--pad-bottom {
+    padding-bottom: 10px;
+  }
+
+  &.data-cell--full-width {
+    width: 100%;
+  }
 }
 
 .navbar {
@@ -255,4 +267,16 @@
   @include border-radius;
   padding: $base-padding;
   background-color: $t-light-grey;
+}
+
+.loading {
+  font-size: 25px;
+
+  &.loading--centered {
+    text-align: center;
+  }
+
+  &.loading--dark {
+    color: $t-light-purple;
+  }
 }

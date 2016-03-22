@@ -6,70 +6,80 @@
   <div class="data-cell data-cell--bold data-cell--align-right">Spent</div>
   <div class="data-cell data-cell--bold data-cell--align-right">Difference</div>
 
-  {{#each categories as |category|}}
-    {{autosave-textfield
-      recordId=category.id
-      attributeName='name'
-      attributeValue=category.name
-      placeholder='Category'
-      recordChanged=(action 'updateCategory')}}
-    {{autosave-moneyfield
-      recordId=category.id
-      attributeName='budgetAmount'
-      attributeValue=category.budgetAmount
-      placeholder='0.00'
-      recordChanged=(action 'updateCategory')}}
-    <div class="data-cell data-cell--align-right">{{dollar-format category.total}}</div>
-    {{data-cell amount=category.difference alignRight=true}}
-    {{delete-button id=category.id recordDeleted=(action 'deleteCategory')}}
-  {{/each}}
+  {{#if currentlyLoading}}
+    <div class="data-cell data-cell--full-width data-cell--pad-top data-cell--pad-bottom">
+      <div class="loading loading--centered loading--dark">
+        {{fa-icon "circle-o-notch" spin=true}}
+      </div>
+    </div>
+  {{else}}
+    {{#each categories as |category|}}
+      {{autosave-textfield
+        recordId=category.id
+        attributeName='name'
+        attributeValue=category.name
+        placeholder='Category'
+        recordChanged=(action 'updateCategory')}}
+      {{autosave-moneyfield
+        recordId=category.id
+        attributeName='budgetAmount'
+        attributeValue=category.budgetAmount
+        placeholder='0.00'
+        recordChanged=(action 'updateCategory')}}
+      <div class="data-cell data-cell--align-right">{{dollar-format category.total}}</div>
+      {{data-cell amount=category.difference alignRight=true}}
+      {{delete-button id=category.id recordDeleted=(action 'deleteCategory')}}
+    {{/each}}
 
-  <div class="data-cell data-cell--bold data-cell--long">Total</div>
-  <div class="data-cell data-cell--bold data-cell--align-right">{{dollar-format total}}</div>
-  <div class="data-cell data-cell--bold data-cell--align-right">{{dollar-format spent}}</div>
-  {{data-cell amount=difference alignRight=true isBold=true}}
+    <div class="data-cell data-cell--bold data-cell--long">Total</div>
+    <div class="data-cell data-cell--bold data-cell--align-right">{{dollar-format total}}</div>
+    <div class="data-cell data-cell--bold data-cell--align-right">{{dollar-format spent}}</div>
+    {{data-cell amount=difference alignRight=true isBold=true}}
 
-  {{category-form categoryAdded=(action 'addCategory')}}
+    {{category-form categoryAdded=(action 'addCategory')}}
+  {{/if}}
 </div>
 
 <h2 class="h2 h2--space-top">Expenses</h2>
 
 <div class="backdrop">
-  {{#if categoriesEmpty}}
-    <p class="text text--align-center">
-      add categories to begin recording expenses
-    </p>
-  {{else}}
-    <div class="data-cell data-cell--bold">Date</div>
-    <div class="data-cell data-cell--bold data-cell--long">Description</div>
-    <div class="data-cell data-cell--bold data-cell--align-right">Amount</div>
-    <div class="data-cell data-cell--bold">Category</div>
+  <div class="data-cell data-cell--bold">Date</div>
+  <div class="data-cell data-cell--bold data-cell--long">Description</div>
+  <div class="data-cell data-cell--bold data-cell--align-right">Amount</div>
+  <div class="data-cell data-cell--bold">Category</div>
 
-    {{entry-form categories=categories entryAdded=(action 'addEntry')}}
+  {{#unless currentlyLoading}}
+    {{#if categoriesEmpty}}
+      <p class="text text--align-center">
+        add categories to begin recording expenses
+      </p>
+    {{else}}
+      {{entry-form categories=categories entryAdded=(action 'addEntry')}}
 
-    {{#each sortedEntries as |entry|}}
-      {{autosave-datefield
-        recordId=entry.id
-        attributeName='occurredOn'
-        attributeValue=entry.occurredOn
-        recordChanged=(action 'updateEntry')}}
-      {{autosave-textfield
-        recordId=entry.id
-        attributeName='description'
-        attributeValue=entry.description
-        placeholder='Description'
-        recordChanged=(action 'updateEntry')}}
-      {{autosave-moneyfield
-        recordId=entry.id
-        attributeName='amount'
-        attributeValue=entry.amount
-        placeholder='0.00'
-        recordChanged=(action 'updateEntry')}}
-      {{entry-category
-        entry=entry
-        categories=categories
-        entryChanged=(action 'updateEntry')}}
-      {{delete-button id=entry.id recordDeleted=(action 'deleteEntry')}}
-    {{/each}}
-  {{/if}}
+      {{#each sortedEntries as |entry|}}
+        {{autosave-datefield
+          recordId=entry.id
+          attributeName='occurredOn'
+          attributeValue=entry.occurredOn
+          recordChanged=(action 'updateEntry')}}
+        {{autosave-textfield
+          recordId=entry.id
+          attributeName='description'
+          attributeValue=entry.description
+          placeholder='Description'
+          recordChanged=(action 'updateEntry')}}
+        {{autosave-moneyfield
+          recordId=entry.id
+          attributeName='amount'
+          attributeValue=entry.amount
+          placeholder='0.00'
+          recordChanged=(action 'updateEntry')}}
+        {{entry-category
+          entry=entry
+          categories=categories
+          entryChanged=(action 'updateEntry')}}
+        {{delete-button id=entry.id recordDeleted=(action 'deleteEntry')}}
+      {{/each}}
+    {{/if}}
+  {{/unless}}
 </div>

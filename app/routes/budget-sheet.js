@@ -8,6 +8,11 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
   setupController(controller, model) {
     controller.set('budgetSheet', model);
-    controller.set('categories', model.get('categories'));
+    controller.set('currentlyLoading', true);
+
+    model.get('categories').then(function(categories) {
+      controller.set('categories', categories);
+      controller.set('currentlyLoading', false);
+    });
   }
 });
