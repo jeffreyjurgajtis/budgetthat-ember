@@ -6,27 +6,30 @@
     theme="datepicker"
     classBinding='occurredOnInvalid:textfield--error'
     focusIn=(action 'resetOccurredOnError')
-    class='textfield'}}
+    class='textfield'
+    disabled=isDisabled}}
   {{input
     placeholder='Description'
     type='text'
     class='textfield textfield--long'
     classBinding='descriptionInvalid:textfield--error'
     focusIn=(action 'resetDescriptionError')
-    value=description}}
+    value=description
+    disabled=isDisabled}}
   {{input
     placeholder='0.00'
     type='text'
     class='textfield textfield--align-right'
     classBinding='amountInvalid:textfield--error'
     focusIn=(action 'resetAmountError')
-    value=amount}}
-  <select id='categoryId' class='textfield'>
+    value=amount
+    disabled=isDisabled}}
+  <select id='categoryId' class='textfield' disabled={{isDisabled}}>
     {{#each categories as |category|}}
       <option value={{category.id}}>{{category.name}}</option>
     {{/each}}
   </select>
-  <button type="submit" class="icon-button">
+  <button type="submit" class="icon-button" disabled={{isDisabled}}>
     {{fa-icon "plus"}}
   </button>
 </form>

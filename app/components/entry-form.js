@@ -9,6 +9,7 @@ export default Ember.Component.extend({
   descriptionInvalid: Ember.computed.not('descriptionValid'),
   amountInvalid: Ember.computed.not('amountValid'),
   valid: Ember.computed.and('occurredOnValid', 'descriptionValid', 'amountValid'),
+  isDisabled: Ember.computed.empty('categories'),
 
   occurredOn: new Date(),
 
