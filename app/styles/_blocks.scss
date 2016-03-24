@@ -242,7 +242,7 @@
   }
 }
 
-.login {
+.login, .signup {
   @include border-box-sizing;
   padding: $base-padding;
   margin: 150px auto;

@@ -1,0 +1,30 @@
+<div class="signup">
+  <h2 class="h2">Sign Up</h2>
+
+  <form {{action "createUser" on="submit"}}>
+    {{input
+      id='email'
+      placeholder='Email'
+      type='email'
+      class='textfield textfield--long textfield--relaxed textfield--dark'
+      required=true
+      autocomplete='off'
+      value=email}}
+    {{input
+      id='password'
+      placeholder='Password'
+      type='password'
+      class='textfield textfield--long textfield--relaxed textfield--dark'
+      required=true
+      value=password}}
+    <button type="submit" class="button button--long button--dark" disabled={{currentlyLoading}}>
+      Sign Up
+    </button>
+
+    {{#if currentlyLoading}}
+      <div class="loading loading--pad-right loading--pull-right">
+        {{fa-icon "refresh" spin=true}}
+      </div>
+    {{/if}}
+  </form>
+</div>

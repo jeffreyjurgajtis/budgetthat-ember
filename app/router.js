@@ -7,6 +7,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('login', { path: '/'});
+  this.route('signup');
   this.route('budgetSheets');
   this.route('budgetSheet', { path: '/budgetSheets/:budgetSheetId' });
 });
