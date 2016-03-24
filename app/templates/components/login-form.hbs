@@ -12,5 +12,13 @@
     type='password'
     class='textfield textfield--long textfield--relaxed textfield--dark'
     value=password}}
-  <button type="submit" class="button button--long button--dark">Login</button>
+  <button type="submit" class="button button--long button--dark" disabled={{currentlyLoading}}>
+    Login
+  </button>
+
+  {{#if currentlyLoading}}
+    <div class="loading loading--pad-right loading--pull-right">
+      {{fa-icon "refresh" spin=true}}
+    </div>
+  {{/if}}
 </form>

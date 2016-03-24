@@ -258,12 +258,17 @@
 
 .loading {
   font-size: 25px;
+  color: $t-light-purple;
 
   &.loading--centered {
     text-align: center;
   }
 
-  &.loading--dark {
-    color: $t-light-purple;
+  &.loading--pull-right {
+    float: right;
+  }
+
+  &.loading--pad-right {
+    padding: 8px 8px 0 0;
   }
 }

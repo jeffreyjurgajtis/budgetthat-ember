@@ -8,14 +8,19 @@ export default Ember.Component.extend({
 
   submit(e) {
     e.preventDefault();
-
     const flashMessages = this.get('flashMessages');
-    let credentials = this.getProperties('email', 'password');
+    const credentials = this.getProperties('email', 'password');
 
-    this.get('session')
-      .authenticate('authenticator:custom', credentials)
-      .then(function() {
-    }, function() {
+    let promise = this.get('session')
+      .authenticate('authenticator:custom', credentials);
+
+    this.set('currentlyLoading', true);
+
+    promise.then(null, (error) => {
+      Ember.run.later(() => {
+        this.set('currentlyLoading', false);
+      }, 500);
+
       flashMessages.failure('Invalid email/password.');
     });
   }
