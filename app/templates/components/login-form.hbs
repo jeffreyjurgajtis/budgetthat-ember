@@ -4,13 +4,16 @@
   {{input
     id='email'
     placeholder='Email'
+    type='email'
     class='textfield textfield--long textfield--relaxed textfield--dark'
+    required=true
     value=email}}
   {{input
     id='password'
     placeholder='Password'
     type='password'
     class='textfield textfield--long textfield--relaxed textfield--dark'
+    required=true
     value=password}}
   <button type="submit" class="button button--long button--dark" disabled={{currentlyLoading}}>
     Login

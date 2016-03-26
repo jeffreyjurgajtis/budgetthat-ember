@@ -2,6 +2,7 @@
   {{input
     placeholder='Category'
     type='text'
+    autocomplete='off'
     class='textfield textfield--long category-name'
     classBinding='nameInvalid:textfield--error'
     focusIn=(action 'resetNameError')
@@ -10,6 +11,7 @@
   {{input 
     placeholder='0.00'
     type='text'
+    autocomplete='off'
     class='textfield textfield--align-right'
     classBinding='amountInvalid:textfield--error'
     focusIn=(action 'resetAmountError')

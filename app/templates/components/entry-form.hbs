@@ -11,6 +11,7 @@
   {{input
     placeholder='Description'
     type='text'
+    autocomplete='off'
     class='textfield textfield--long'
     classBinding='descriptionInvalid:textfield--error'
     focusIn=(action 'resetDescriptionError')
@@ -19,6 +20,7 @@
   {{input
     placeholder='0.00'
     type='text'
+    autocomplete='off'
     class='textfield textfield--align-right'
     classBinding='amountInvalid:textfield--error'
     focusIn=(action 'resetAmountError')
