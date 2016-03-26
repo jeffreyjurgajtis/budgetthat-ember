@@ -16,7 +16,7 @@ export default Ember.Component.extend({
 
     this.set('currentlyLoading', true);
 
-    promise.then(null, (error) => {
+    promise.then(null, () => {
       Ember.run.later(() => {
         this.set('currentlyLoading', false);
       }, 400);

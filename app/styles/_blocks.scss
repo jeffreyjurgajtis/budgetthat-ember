@@ -4,10 +4,6 @@
   text-align: center;
   color: $t-light-grey;
   margin-bottom: 18px;
-
-  &.h1--space-top {
-    margin-top: 150px;
-  }
 }
 
 .h2 {
@@ -257,7 +253,7 @@
 .login {
   @include border-box-sizing;
   padding: $base-padding;
-  margin: 150px auto;
+  margin: 0 auto;
   width: 270px;
 }
 
@@ -303,4 +299,15 @@
   &.text--space-bottom {
     margin-bottom: 50px;
   }
+}
+
+.centered-container {
+  position: absolute;
+  width: $page-width;
+  height: 250px;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }

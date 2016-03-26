@@ -1,36 +1,38 @@
-<h1 class="h1 h1--space-top">
-  Simple, Intuitive Budgeting.
-</h1>
+<div class="centered-container">
+  <h1 class="h1">
+    Simple, Intuitive Budgeting.
+  </h1>
 
-<p class="text text--centered text--space-bottom">
-  Dead simple budgeting spreadsheets &mdash; and that&apos;s it.
-</p>
+  <p class="text text--centered text--space-bottom">
+    Dead simple budgeting spreadsheets &mdash; and that&apos;s it.
+  </p>
 
-<div class="signup">
-  {{#if currentlyLoading}}
-    <div class="loading loading--pad-right loading--pull-right">
-      {{fa-icon "refresh" spin=true}}
-    </div>
-  {{/if}}
+  <div class="signup">
+    {{#if currentlyLoading}}
+      <div class="loading loading--pad-right loading--pull-right">
+        {{fa-icon "refresh" spin=true}}
+      </div>
+    {{/if}}
 
-  <form {{action "createUser" on="submit"}}>
-    {{input
-      id='email'
-      placeholder='Email'
-      type='email'
-      class='textfield textfield--medium textfield--relaxed textfield--dark'
-      required=true
-      autocomplete='off'
-      value=email}}
-    {{input
-      id='password'
-      placeholder='Password'
-      type='password'
-      class='textfield textfield--medium textfield--relaxed textfield--dark'
-      required=true
-      value=password}}
-    <button type="submit" class="button button--long button--dark" disabled={{currentlyLoading}}>
-      Sign Up
-    </button>
-  </form>
+    <form {{action "createUser" on="submit"}}>
+      {{input
+        id='email'
+        placeholder='Email'
+        type='email'
+        class='textfield textfield--medium textfield--relaxed textfield--dark'
+        required=true
+        autocomplete='off'
+        value=email}}
+      {{input
+        id='password'
+        placeholder='Password'
+        type='password'
+        class='textfield textfield--medium textfield--relaxed textfield--dark'
+        required=true
+        value=password}}
+      <button type="submit" class="button button--long button--dark" disabled={{currentlyLoading}}>
+        Sign Up
+      </button>
+    </form>
+  </div>
 </div>
