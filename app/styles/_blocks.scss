@@ -1,3 +1,15 @@
+.h1 {
+  font-size: 60px;
+  font-weight: $base-font-weight;
+  text-align: center;
+  color: $t-light-grey;
+  margin-bottom: 18px;
+
+  &.h1--space-top {
+    margin-top: 150px;
+  }
+}
+
 .h2 {
   font-size: 20px;
   margin-bottom: 20px;
@@ -242,11 +254,19 @@
   }
 }
 
-.login, .signup {
+.login {
   @include border-box-sizing;
   padding: $base-padding;
   margin: 150px auto;
   width: 270px;
+}
+
+.signup {
+  @include border-box-sizing;
+  width: 600px;
+  margin: 0 auto;
+  height: 45px;
+  padding-left: 50px;
 }
 
 .backdrop {
@@ -269,6 +289,18 @@
   }
 
   &.loading--pad-right {
-    padding: 8px 8px 0 0;
+    padding: 8px 12px 0 0;
+  }
+}
+
+.text {
+  color: $t-light-purple;
+
+  &.text--centered {
+    text-align: center;
+  }
+
+  &.text--space-bottom {
+    margin-bottom: 50px;
   }
 }

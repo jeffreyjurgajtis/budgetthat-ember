@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
       }, (response) => {
         Ember.run.later(() => {
           this.set('currentlyLoading', false);
-        }, 300);
+        }, 400);
 
         flashMessages.failure(response.errors[0]);
       });

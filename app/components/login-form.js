@@ -19,7 +19,7 @@ export default Ember.Component.extend({
     promise.then(null, (error) => {
       Ember.run.later(() => {
         this.set('currentlyLoading', false);
-      }, 300);
+      }, 400);
 
       flashMessages.failure('Invalid email/password.');
     });
