@@ -75,5 +75,7 @@ export default Ember.Component.extend({
     } else {
       return moment(date.toLocaleDateString(), "MM/DD/YYYY");
     }
-  }
+  },
+
+  entriesNotEmpty: Ember.computed.notEmpty('entries')
 });

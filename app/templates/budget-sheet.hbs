@@ -49,7 +49,7 @@
   <div class="data-cell data-cell--bold">Category</div>
 
   {{#unless currentlyLoading}}
-    {{entry-form categories=categories entryAdded=(action 'addEntry')}}
+    {{entry-form entries=sortedEntries categories=categories entryAdded=(action 'addEntry')}}
 
     {{#each sortedEntries as |entry|}}
       {{autosave-datefield
