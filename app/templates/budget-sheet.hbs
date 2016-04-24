@@ -27,7 +27,7 @@
         placeholder='0.00'
         recordChanged=(action 'updateCategory')}}
       <div class="data-cell data-cell--align-right">{{dollar-format category.total}}</div>
-      {{data-cell amount=category.difference alignRight=true}}
+      {{data-cell highlightPositive=true amount=category.difference alignRight=true}}
       {{delete-button id=category.id recordDeleted=(action 'deleteCategory')}}
     {{/each}}
 

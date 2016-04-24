@@ -155,6 +155,10 @@
     color: $red;
   }
 
+  &.data-cell--positive {
+    color: $green;
+  }
+
   &.data-cell--space-bottom {
     margin-bottom: 20px;
   }
