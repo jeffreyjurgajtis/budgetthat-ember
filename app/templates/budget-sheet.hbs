@@ -43,8 +43,7 @@
 <h2 class="h2 h2--space-top">Expenses</h2>
 
 <div class="backdrop">
-  <div class="data-cell data-cell--bold">Date</div>
-  <div class="data-cell data-cell--bold data-cell--long">Description</div>
+  <div class="data-cell data-cell--bold data-cell--super-long">Description</div>
   <div class="data-cell data-cell--bold data-cell--align-right">Amount</div>
   <div class="data-cell data-cell--bold">Category</div>
 
@@ -52,16 +51,12 @@
     {{entry-form entries=sortedEntries categories=categories entryAdded=(action 'addEntry')}}
 
     {{#each sortedEntries as |entry|}}
-      {{autosave-datefield
-        recordId=entry.id
-        attributeName='occurredOn'
-        attributeValue=entry.occurredOn
-        recordChanged=(action 'updateEntry')}}
       {{autosave-textfield
         recordId=entry.id
         attributeName='description'
         attributeValue=entry.description
         placeholder='Description'
+        superLong=true
         recordChanged=(action 'updateEntry')}}
       {{autosave-moneyfield
         recordId=entry.id

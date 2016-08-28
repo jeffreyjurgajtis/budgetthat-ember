@@ -40,6 +40,10 @@
     width: 250px;
   }
 
+  &.textfield--super-long {
+    width: 418px;
+  }
+
   &.textfield--medium {
     width: 192px;
   }
@@ -149,6 +153,10 @@
 
   &.data-cell--long {
     width: 250px;
+  }
+
+  &.data-cell--super-long {
+    width: 418px;
   }
 
   &.data-cell--negative {

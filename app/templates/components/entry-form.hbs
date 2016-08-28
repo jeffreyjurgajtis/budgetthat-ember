@@ -1,18 +1,9 @@
 <form class={{if entriesNotEmpty 'space-bottom'}}>
-  {{pikaday-input
-    value=occurredOn
-    format="MM/DD/YYYY"
-    placeholder="MM/DD/YYYY"
-    theme="datepicker"
-    classBinding='occurredOnInvalid:textfield--error'
-    focusIn=(action 'resetOccurredOnError')
-    class='textfield'
-    disabled=isDisabled}}
   {{input
     placeholder='Description'
     type='text'
     autocomplete='off'
-    class='textfield textfield--long'
+    class='textfield textfield--super-long'
     classBinding='descriptionInvalid:textfield--error'
     focusIn=(action 'resetDescriptionError')
     value=description

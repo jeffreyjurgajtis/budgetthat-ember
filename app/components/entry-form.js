@@ -2,21 +2,17 @@ import Ember from 'ember';
 import moment from 'moment';
 
 export default Ember.Component.extend({
-  occurredOnValid: true,
   descriptionValid: true,
   amountValid: true,
-  occurredOnInvalid: Ember.computed.not('occurredOnValid'),
   descriptionInvalid: Ember.computed.not('descriptionValid'),
   amountInvalid: Ember.computed.not('amountValid'),
-  valid: Ember.computed.and('occurredOnValid', 'descriptionValid', 'amountValid'),
+  valid: Ember.computed.and('descriptionValid', 'amountValid'),
   isDisabled: Ember.computed.empty('categories'),
-
-  occurredOn: new Date(),
 
   submit(e) {
     e.preventDefault();
 
-    const occurredOn  = this.dateToMoment(this.get('occurredOn'));
+    const occurredOn  = moment()._d;
     const description = this.get('description');
     const categoryId  = e.target.getElementsByTagName('select')[0].value;
     let amount        = String(this.get('amount'))
@@ -25,13 +21,8 @@ export default Ember.Component.extend({
       .replace(/\./g, '');
     amount = parseInt(amount);
 
-    if (this.validate(occurredOn, description, amount)) {
-      this.attrs.entryAdded(
-        occurredOn.toDate(),
-        description,
-        categoryId,
-        amount
-      );
+    if (this.validate(description, amount)) {
+      this.attrs.entryAdded(occurredOn, description, categoryId, amount);
 
       this.set('description', '');
       this.set('amount', '');
@@ -39,11 +30,7 @@ export default Ember.Component.extend({
     }
   },
 
-  validate: function(occurredOn, description, amount) {
-    if (!occurredOn.isValid()) {
-      this.set('occurredOnValid', false);
-    }
-
+  validate: function(description, amount) {
     if (Ember.isBlank(description)) {
       this.set('descriptionValid', false);
     }
@@ -56,24 +43,12 @@ export default Ember.Component.extend({
   },
 
   actions: {
-    resetOccurredOnError() {
-      this.set('occurredOnValid', true);
-    },
-
     resetDescriptionError() {
       this.set('descriptionValid', true);
     },
 
     resetAmountError() {
       this.set('amountValid', true);
-    }
-  },
-
-  dateToMoment(date) {
-    if (Ember.isBlank(date)) {
-      return moment(date, "MM/DD/YYYY");
-    } else {
-      return moment(date.toLocaleDateString(), "MM/DD/YYYY");
     }
   },
 

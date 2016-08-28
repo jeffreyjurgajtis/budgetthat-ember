@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
       let session = this.get('session');
       let user = this.store.createRecord('user', userProperties);
 
-      user.save().then((user) => {
+      user.save().then(() => {
         session.authenticate('authenticator:custom', userProperties);
       }, (response) => {
         Ember.run.later(() => {
