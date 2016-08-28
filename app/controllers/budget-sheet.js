@@ -14,6 +14,18 @@ export default Ember.Controller.extend({
     }
   }),
 
+  projectedSavings: Ember.computed('budgetSheet.income', 'total', {
+    get() {
+      return this.get('budgetSheet.income') - this.get('total');
+    }
+  }),
+
+  actualSavings: Ember.computed('budgetSheet.income', 'spent', {
+    get() {
+      return this.get('budgetSheet.income') - this.get('spent');
+    }
+  }),
+
   entries: Ember.computed('categories.@each.entries', {
     get() {
       let result = [];
@@ -100,6 +112,13 @@ export default Ember.Controller.extend({
       entry.destroyRecord().then(function() {
         flashMessages.success('Saved.');
       });
-    }
+    },
+
+    updateBudgetSheet(id, attribute, value) {
+      const flashMessages = Ember.get(this, 'flashMessages');
+      const budgetSheet = this.store.peekRecord('budgetSheet', id);
+      budgetSheet.set(attribute, value);
+      flashMessages.success('Saved.');
+    },
   }
 });

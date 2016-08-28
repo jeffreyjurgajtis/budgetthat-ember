@@ -5,5 +5,6 @@ export default DS.Model.extend({
   createdAt:  DS.attr('date', {
     defaultValue() { return new Date(); }
   }),
-  categories: DS.hasMany('category')
+  categories: DS.hasMany('category'),
+  income:     DS.attr('number', { defaultValue: 493000 })
 });
