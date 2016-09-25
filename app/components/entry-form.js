@@ -26,7 +26,7 @@ export default Ember.Component.extend({
 
       this.set('description', '');
       this.set('amount', '');
-      this.$('input.textfield--long').focus();
+      this.$('input.textfield--super-long').focus();
     }
   },
 
