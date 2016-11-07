@@ -1,0 +1,69 @@
+@media all and (max-width: 667px) { 
+  .container {
+    width: 350px !important;
+  }
+
+  .centered-container {
+    width: 350px !important;
+  }
+
+  .h1 {
+    font-size: 25px;
+  }
+
+  .budget-sheet-card {
+    .budget-sheet-card__link {
+      width: 100%;
+    }
+  }
+
+  .data-cell {
+    width: 75px !important;
+
+    &.data-cell--long {
+      width: 112px !important;
+    }
+
+    &.data-cell--super-long {
+      width: 191px !important;
+    }
+  }
+
+  .textfield {
+    width: 75px !important;
+    border: 1px solid $t-purple;
+    pointer-events: none;
+
+    &.textfield--long {
+      width: 112px !important;
+    }
+
+    &.textfield--super-long {
+      width: 191px !important;
+    }
+
+    &.textfield--mobile-friendly {
+      width: 100% !important;
+      pointer-events: auto !important;
+      color: $t-light-grey;
+      background-color: $t-dark-purple;
+      border: 1px solid $t-dark-purple;
+      padding: $base-padding;
+
+      &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 1000px $t-dark-purple inset;
+        -webkit-text-fill-color: $t-light-grey;
+      }
+    }
+  }
+
+  .button {
+    &.button--mobile-friendly {
+      width: 100% !important;
+    }
+  }
+
+  .hidden-on-device {
+    display: none !important;
+  }
+}

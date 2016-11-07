@@ -1,13 +1,11 @@
-<p class="budget-sheet-card__title">Create new sheet...</p>
-
 <form>
   {{input
-    placeholder='Name'
+    placeholder='New Sheet'
     type='text'
     autocomplete='off'
     value=name
     classBinding='nameInvalid:textfield--error'
-    class='textfield textfield--medium textfield--dark textfield--relaxed'}}
+    class='textfield textfield--long textfield--relaxed'}}
   <button type="submit" class="icon-button icon-button--light">
     {{fa-icon "plus"}}
   </button>

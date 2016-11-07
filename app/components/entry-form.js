@@ -2,6 +2,8 @@ import Ember from 'ember';
 import moment from 'moment';
 
 export default Ember.Component.extend({
+  classNames: ['hidden-on-device'],
+
   descriptionValid: true,
   amountValid: true,
   descriptionInvalid: Ember.computed.not('descriptionValid'),

@@ -1,5 +1,5 @@
 .h1 {
-  font-size: 60px;
+  font-size: 45px;
   font-weight: $base-font-weight;
   text-align: center;
   color: $t-light-grey;
@@ -13,39 +13,43 @@
   color: $t-light-purple;
 
   &.h2--space-top {
-    margin-top: 40px;
+    margin-top: 60px;
   }
 }
 
 .textfield {
   @include border-box-sizing;
-  @include border-radius;
   @include no-appearance;
   padding: $compact-padding;
   margin-bottom: 4px;
   font-size: $base-font-size;
   font-weight: $base-font-weight;
   font-family: $base-font-family;
-  background-color: $white;
-  color: $t-dark-grey;
-  width: 164px;
+  background-color: $t-purple;
+  color: $t-light-purple;
+  width: $base-field-length;
   outline: none;
-  border: 1px solid $t-border-grey;
+  border: 1px solid $t-purple;
+  border-bottom: 1px solid $t-light-purple;
 
   &.textfield--align-right {
     text-align: right;
   }
 
   &.textfield--long {
-    width: 250px;
+    width: $long-field-length;
   }
 
   &.textfield--super-long {
-    width: 418px;
+    width: $super-long-field-length;
   }
 
   &.textfield--medium {
     width: 192px;
+  }
+
+  &.textfield--full {
+    width: 100%;
   }
 
   &.textfield--relaxed {
@@ -53,6 +57,7 @@
   }
 
   &.textfield--dark {
+    @include border-radius;
     color: $t-light-grey;
     background-color: $t-dark-purple;
     border: 1px solid $t-dark-purple;
@@ -61,14 +66,19 @@
       -webkit-box-shadow: 0 0 0 1000px $t-dark-purple inset;
       -webkit-text-fill-color: $t-light-grey;
     }
+
+    &:focus {
+      border: 1px solid $t-grey !important;
+    }
   }
 
   &.textfield--error {
-    border: 1px solid $red;
+    border-bottom: 1px solid $red;
   }
 
   &:focus {
-    border: 1px solid $t-grey;
+    color: $white;
+    border-bottom: 1px solid $white;
   }
 }
 
@@ -139,9 +149,9 @@
   margin-bottom: 5px;
   font-size: $base-font-size;
   font-weight: $base-font-weight;
-  color: $t-dark-grey;
+  color: $t-light-purple;
   border: none;
-  width: 164px;
+  width: $base-field-length;
 
   &.data-cell--align-right {
     text-align: right;
@@ -152,11 +162,11 @@
   }
 
   &.data-cell--long {
-    width: 250px;
+    width: $long-field-length;
   }
 
   &.data-cell--super-long {
-    width: 418px;
+    width: $super-long-field-length;
   }
 
   &.data-cell--negative {
@@ -189,7 +199,7 @@
   height: 60px;
 
   .navbar__h1 {
-    font-size: 25px;
+    font-size: 24px;
     color: $t-light-grey;
 
     span {
@@ -202,7 +212,7 @@
     text-decoration: none;
     float: right;
     margin-left: 20px;
-    margin-top: 5px;
+    margin-top: 6px;
     color: $t-light-purple;
 
     &:hover {
@@ -214,29 +224,21 @@
 .budget-sheet-card {
   @include border-box-sizing;
   @include border-radius;
-  float: left;
-  display: inline-block;
-  padding: $base-padding;
-  background-color: $t-light-grey;
-  width: 263px;
-  height: 90px;
-  margin: 0 18px 18px 0;
-
-  &:nth-of-type(3n+1) {
-    margin-right: 0;
-  }
-
-  &.budget-sheet-card--inverted {
-    background-color: $t-purple;
-  }
+  background-color: transparent;
+  width: 100%;
+  height: 50px;
+  margin: 0 0 10px 0;
 
   .budget-sheet-card__link {
+    @include border-box-sizing;
+    @include border-radius;
+    display: inline-block;
+    background-color: $t-light-grey;
+    height: 50px;
+    width: 550px;
     color: $t-purple;
     text-decoration: none;
-
-    &:hover {
-      color: $t-dark-purple;
-    }
+    padding: $base-padding;
   }
 
   .budget-sheet-card__button {
@@ -245,6 +247,8 @@
     font-size: $base-font-size;
     font-weight: $base-font-weight;
     background-color: transparent;
+    height: 50px;
+    width: 50px;
     padding: 0;
     border: none;
     float: right;
@@ -252,19 +256,13 @@
 
     &:hover {
       cursor: pointer;
-      color: $t-dark-grey;
+      color: lighten($t-light-purple, 10%);
     }
-  }
-
-  .budget-sheet-card__title {
-    color: $t-light-purple;
-    margin-bottom: 12px;
   }
 }
 
 .login {
   @include border-box-sizing;
-  padding: $base-padding;
   margin: 0 auto;
   width: 270px;
 }
@@ -279,9 +277,6 @@
 
 .backdrop {
   @include border-box-sizing;
-  @include border-radius;
-  padding: $base-padding;
-  background-color: $t-light-grey;
 }
 
 .loading {

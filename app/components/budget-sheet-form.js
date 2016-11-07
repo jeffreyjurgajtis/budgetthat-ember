@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['budget-sheet-card', 'budget-sheet-card--inverted'],
+  classNames: [ 'hidden-on-device' ],
 
   nameValid: true,
   nameInvalid: Ember.computed.not('nameValid'),

@@ -3,7 +3,7 @@
     placeholder='Description'
     type='text'
     autocomplete='off'
-    class='textfield textfield--super-long'
+    class='textfield textfield--super-long textfield--mobile-friendly'
     classBinding='descriptionInvalid:textfield--error'
     focusIn=(action 'resetDescriptionError')
     value=description
@@ -12,12 +12,12 @@
     placeholder='0.00'
     type='text'
     autocomplete='off'
-    class='textfield textfield--align-right'
+    class='textfield textfield--align-right textfield--mobile-friendly'
     classBinding='amountInvalid:textfield--error'
     focusIn=(action 'resetAmountError')
     value=amount
     disabled=isDisabled}}
-  <select id='categoryId' class='textfield' disabled={{isDisabled}}>
+  <select id='categoryId' class='textfield textfield--mobile-friendly' disabled={{isDisabled}}>
     {{#each categories as |category|}}
       <option value={{category.id}}>{{category.name}}</option>
     {{/each}}
