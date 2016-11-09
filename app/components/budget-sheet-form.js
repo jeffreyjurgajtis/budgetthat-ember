@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: [ 'hidden-on-device' ],
+  classNames: [ 'hidden-on-device', 'space-bottom--10' ],
 
   nameValid: true,
   nameInvalid: Ember.computed.not('nameValid'),

@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  budgetSheetOrder: ['createdAt:asc'],
+  budgetSheetOrder: ['createdAt:desc'],
   sortedBudgetSheets: Ember.computed.sort('budgetSheets', 'budgetSheetOrder'),
 
   actions: {
