@@ -122,6 +122,13 @@ export default Ember.Controller.extend({
       budgetSheet.save().then(function() {
         flashMessages.success('Saved.');
       });
+    },
+
+    toggleDisplaySavings(id) {
+      const budgetSheet = this.store.peekRecord('budgetSheet', id);
+
+      budgetSheet.toggleProperty('displaySavings');
+      budgetSheet.save();
     }
   }
 });

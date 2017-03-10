@@ -40,31 +40,43 @@
   {{/if}}
 </div>
 
-<h2 class="h2 h2--space-top">Savings</h2>
+<div class="backdrop {{if budgetSheet.displaySavings '' 'backdrop--border-bottom'}}">
+  <h2 class="h2 h2--space-top">Savings</h2>
 
-<div class="backdrop">
-  <div class="data-cell data-cell--bold data-cell--super-long">Income</div>
-  <div class="data-cell data-cell--bold data-cell--align-right">Projected</div>
-  <div class="data-cell data-cell--bold data-cell--align-right">Actual</div>
-
-  {{#if currentlyLoading}}
-    <div class="data-cell data-cell--full-width data-cell--pad-top data-cell--pad-bottom">
-      <div class="loading loading--centered">
-        {{fa-icon "refresh" spin=true}}
-      </div>
-    </div>
-  {{else}}
-    {{autosave-moneyfield
-      recordId=budgetSheet.id
-      attributeName='income'
-      attributeValue=budgetSheet.income
-      placeholder='0.00'
-      superLong=true
-      recordChanged=(action 'updateBudgetSheet')}}
-    <div class="data-cell data-cell--bold data-cell--align-right">{{dollar-format projectedSavings}}</div>
-    {{data-cell amount=actualSavings alignRight=true isBold=true}}
-  {{/if}}
+  <button class="icon-button icon-button--right icon-button--pull-up" {{action 'toggleDisplaySavings' budgetSheet.id}}>
+    {{#if budgetSheet.displaySavings}}
+      {{fa-icon "chevron-up"}}
+    {{else}}
+      {{fa-icon "chevron-down"}}
+    {{/if}}
+  </button>
 </div>
+
+{{#if budgetSheet.displaySavings}}
+  <div class="backdrop">
+    <div class="data-cell data-cell--bold data-cell--super-long">Income</div>
+    <div class="data-cell data-cell--bold data-cell--align-right">Projected</div>
+    <div class="data-cell data-cell--bold data-cell--align-right">Actual</div>
+
+    {{#if currentlyLoading}}
+      <div class="data-cell data-cell--full-width data-cell--pad-top data-cell--pad-bottom">
+        <div class="loading loading--centered">
+          {{fa-icon "refresh" spin=true}}
+        </div>
+      </div>
+    {{else}}
+      {{autosave-moneyfield
+        recordId=budgetSheet.id
+        attributeName='income'
+        attributeValue=budgetSheet.income
+        placeholder='0.00'
+        superLong=true
+        recordChanged=(action 'updateBudgetSheet')}}
+      <div class="data-cell data-cell--bold data-cell--align-right">{{dollar-format projectedSavings}}</div>
+      {{data-cell amount=actualSavings alignRight=true isBold=true}}
+    {{/if}}
+  </div>
+{{/if}}
 
 
 <h2 class="h2 h2--space-top">Expenses</h2>

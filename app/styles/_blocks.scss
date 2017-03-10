@@ -109,6 +109,14 @@
       color: lighten($t-light-purple, 10%);
     }
   }
+
+  &.icon-button--right {
+    float: right;
+  }
+
+  &.icon-button--pull-up {
+    margin-top: -45px;
+  }
 }
 
 .button {
@@ -277,6 +285,10 @@
 
 .backdrop {
   @include border-box-sizing;
+
+  &.backdrop--border-bottom {
+    border-bottom: 1px solid $t-light-purple;
+  }
 }
 
 .loading {
