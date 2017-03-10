@@ -118,7 +118,10 @@ export default Ember.Controller.extend({
       const flashMessages = Ember.get(this, 'flashMessages');
       const budgetSheet = this.store.peekRecord('budgetSheet', id);
       budgetSheet.set(attribute, value);
-      flashMessages.success('Saved.');
-    },
+
+      budgetSheet.save().then(function() {
+        flashMessages.success('Saved.');
+      });
+    }
   }
 });
