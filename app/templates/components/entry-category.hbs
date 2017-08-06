@@ -1,4 +1,6 @@
 <select class='textfield'>
+  <option value="" selected={{is-blank entry.category}}>-</option>
+
   {{#each categories as |category|}}
     <option value={{category.id}} selected={{eq category.id entry.category.id}}>
       {{category.name}}

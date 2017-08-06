@@ -1,0 +1,16 @@
+<h2 class="h2">Import Transactions</h2>
+
+<button class="icon-button icon-button--right icon-button--pull-up" {{action "close"}}>
+  {{fa-icon "remove"}}
+</button>
+
+<div class="modal__body">
+  <label for="entries">Choose file to upload:</label>
+  <input type="file" id="entries" name="entries" accept=".csv">
+</div>
+
+<div class="modal__footer">
+  <button class="button button--dark button--long" {{action "submit"}}>
+    Import
+  </button>
+</div>

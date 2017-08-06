@@ -31,6 +31,15 @@
       {{delete-button id=category.id recordDeleted=(action 'deleteCategory')}}
     {{/each}}
 
+    <div class="data-cell data-cell--long {{if uncategorizedSpent 'data-cell--negative'}}">
+      Uncategorized
+    </div>
+    <div class="data-cell data-cell--align-right"></div>
+    <div class="data-cell data-cell--align-right {{if uncategorizedSpent 'data-cell--negative'}}">
+      {{dollar-format uncategorizedSpent}}
+    </div>
+    <div class="data-cell data-cell--align-right"></div>
+
     <div class="data-cell data-cell--bold data-cell--long">Total</div>
     <div class="data-cell data-cell--bold data-cell--align-right">{{dollar-format total}}</div>
     <div class="data-cell data-cell--bold data-cell--align-right">{{dollar-format spent}}</div>
@@ -79,7 +88,10 @@
 {{/if}}
 
 
-<h2 class="h2 h2--space-top">Expenses</h2>
+<h2 class="h2 h2--space-top">Transactions</h2>
+<a class="link link--pull-up link--pull-right hidden-on-device" {{ action 'openImportModal'}}>
+  Import Transactions
+</a>
 
 <div class="backdrop">
   <div class="data-cell data-cell--bold data-cell--super-long">Description</div>
@@ -111,3 +123,11 @@
     {{/each}}
   {{/unless}}
 </div>
+
+{{#if isShowingImportModal}}
+  {{entry-import-modal
+    closeHandler=(action 'closeImportModal')
+    submitHandler=(action 'createEntryImport')}}
+
+  {{modal-overlay clickHandler=(action 'closeImportModal')}}
+{{/if}}

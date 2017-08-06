@@ -330,3 +330,23 @@
   right: 0;
   margin: auto;
 }
+
+.link {
+  cursor: pointer;
+  text-decoration: underline;
+  color: $t-light-purple;
+  font-size: 14px;
+  font-weight: $base-font-weight;
+
+  &.link--pull-up {
+    margin-top: -35px;
+  }
+
+  &.link--pull-right {
+    float: right;
+  }
+
+  &:hover {
+    color: lighten($t-light-purple, 10%);
+  }
+}

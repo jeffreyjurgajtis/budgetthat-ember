@@ -10,4 +10,5 @@ export default DS.Model.extend({
     defaultValue() { return new Date(); }
   }),
   category:    DS.belongsTo('category'),
+  budgetSheet: DS.belongsTo('budget-sheet')
 });

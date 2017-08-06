@@ -1,43 +1,46 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  isShowingImportModal: false,
+
   categoriesEmpty: Ember.computed.empty('categories'),
   categoryTotals: Ember.computed.mapBy('categories', 'budgetAmount'),
   total: Ember.computed.sum('categoryTotals'),
 
   categoryEntryTotals: Ember.computed.mapBy('categories', 'total'),
-  spent: Ember.computed.sum('categoryEntryTotals'),
+  categorizedSpent: Ember.computed.sum('categoryEntryTotals'),
 
-  difference: Ember.computed('total', 'spent', {
-    get() {
-      return this.get('total') - this.get('spent');
+  uncategorizedEntryAmounts: Ember.computed(
+    'entries.@each.{amount,category}',
+    function() {
+      return this.get('entries').reduce(function(acc, entry) {
+        if (Ember.isBlank(entry.get('category.id'))) {
+          acc.push(entry.get('amount'));
+        }
+
+        return acc;
+      }, []);
     }
+  ),
+  uncategorizedSpent: Ember.computed.sum('uncategorizedEntryAmounts'),
+
+  spent: Ember.computed('categorizedSpent', 'uncategorizedSpent', function() {
+    const categorizedSpent = this.get('categorizedSpent');
+    const uncategorizedSpent = this.get('uncategorizedSpent');
+
+    return categorizedSpent + uncategorizedSpent;
   }),
 
-  projectedSavings: Ember.computed('budgetSheet.income', 'total', {
-    get() {
-      return this.get('budgetSheet.income') - this.get('total');
-    }
+  difference: Ember.computed('total', 'spent', function() {
+    return this.get('total') - this.get('spent');
   }),
 
-  actualSavings: Ember.computed('budgetSheet.income', 'spent', {
-    get() {
-      return this.get('budgetSheet.income') - this.get('spent');
-    }
+  projectedSavings: Ember.computed('budgetSheet.income', 'total', function() {
+    return this.get('budgetSheet.income') - this.get('total');
   }),
 
-  entries: Ember.computed('categories.@each.entries', {
-    get() {
-      let result = [];
-
-      this.get('categories').map(function(category) {
-        category.get('entries').forEach(function(entry) {
-          return result.push(entry);
-        });
-      });
-
-      return result;
-    }
+  actualSavings: Ember.computed('budgetSheet.income', 'spent', function() {
+    return this.get('budgetSheet.income') - this.get('spent');
   }),
 
   entriesOrder: ['createdAt:desc'],
@@ -81,13 +84,15 @@ export default Ember.Controller.extend({
 
     addEntry(occurredOn, description, categoryId, amount) {
       const flashMessages = Ember.get(this, 'flashMessages');
-      let category = this.store.peekRecord('category', categoryId);
+      const category = this.store.peekRecord('category', categoryId);
+      const budgetSheet = this.get('budgetSheet');
 
-      let entry = this.store.createRecord('entry', {
-        occurredOn: occurredOn,
-        description: description,
-        category: category,
-        amount: amount
+      const entry = this.store.createRecord('entry', {
+        occurredOn,
+        description,
+        category,
+        amount,
+        budgetSheet
       });
 
       entry.save().then(function() {
@@ -97,7 +102,7 @@ export default Ember.Controller.extend({
 
     updateEntry(id, attribute, value) {
       const flashMessages = Ember.get(this, 'flashMessages');
-      let entry = this.store.peekRecord('entry', id);
+      const entry = this.store.peekRecord('entry', id);
       entry.set(attribute, value);
 
       entry.save().then(function() {
@@ -129,6 +134,28 @@ export default Ember.Controller.extend({
 
       budgetSheet.toggleProperty('displaySavings');
       budgetSheet.save();
+    },
+
+    openImportModal() {
+      this.set('isShowingImportModal', true);
+    },
+
+    closeImportModal() {
+      this.set('isShowingImportModal', false);
+    },
+
+    createEntryImport(fileData) {
+      const flashMessages = Ember.get(this, 'flashMessages');
+      const budgetSheet = Ember.get(this, 'budgetSheet');
+      const entryImport = this.store.createRecord('entry-import', {
+        budgetSheet,
+        fileData
+      });
+
+      entryImport.save().then(() => {
+        this.set('isShowingImportModal', false);
+        flashMessages.success('Saved.');
+      });
     }
   }
 });

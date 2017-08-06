@@ -12,7 +12,11 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
     model.get('categories').then(function(categories) {
       controller.set('categories', categories);
-      controller.set('currentlyLoading', false);
+
+      model.get('entries').then(function(entries) {
+        controller.set('entries', entries);
+        controller.set('currentlyLoading', false);
+      });
     });
   }
 });
