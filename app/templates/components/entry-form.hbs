@@ -18,6 +18,8 @@
     value=amount
     disabled=isDisabled}}
   <select id='categoryId' class='textfield textfield--mobile-friendly' disabled={{isDisabled}}>
+    <option value="">-</option>
+
     {{#each categories as |category|}}
       <option value={{category.id}}>{{category.name}}</option>
     {{/each}}
