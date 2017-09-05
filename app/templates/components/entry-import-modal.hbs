@@ -5,6 +5,14 @@
 </button>
 
 <div class="modal__body">
+  {{#if errorMessagesPresent}}
+    <div class="space-bottom">
+      {{#each errorMessages as |errorMessage|}}
+        <p class="text text--red">{{errorMessage}}.</p>
+      {{/each}}
+    </div>
+  {{/if}}
+
   <label for="entries">Choose file to upload:</label>
   <input type="file" id="entries" name="entries" accept=".csv">
 </div>

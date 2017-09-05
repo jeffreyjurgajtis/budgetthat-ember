@@ -318,6 +318,10 @@
   &.text--space-bottom {
     margin-bottom: 50px;
   }
+
+  &.text--red {
+    color: $red;
+  }
 }
 
 .centered-container {

@@ -152,7 +152,7 @@ export default Ember.Controller.extend({
         fileData
       });
 
-      entryImport.save().then(() => {
+      return entryImport.save().then(() => {
         this.set('isShowingImportModal', false);
         flashMessages.success('Saved.');
       });
